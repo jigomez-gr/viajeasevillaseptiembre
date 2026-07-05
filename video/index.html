@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRUTAL BURGER | 30s Cinematic Ad</title>
+    <!-- HyperFrames & GSAP Library Loader -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:ital,wght@0,700;0,900;1,700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #050505;
+            overflow: hidden;
+            font-family: 'Inter', sans-serif;
+            color: #ffffff;
+        }
+        /* 16:9 Cinematic Video Canvas */
+        #video-canvas {
+            position: relative;
+            width: 1920px;
+            height: 1080px;
+            background-color: #000000;
+            overflow: hidden;
+            /* Scale canvas proportionally for previews */
+            transform-origin: top left;
+        }
+        .text-glow {
+            text-shadow: 0 0 20px rgba(229, 190, 60, 0.4);
+        }
+        .vignette {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle, transparent 30%, rgba(0,0,0,0.95) 100%);
+            z-index: 10;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HyperFrames 30-Second Video Project Container -->
+    <!-- data-duration="30000" defines exactly 30.00 seconds of runtime -->
+    <div id="video-canvas" data-duration="30000" class="shadow-2xl">
+        
+        <!-- Cinematic Vignette Overlay -->
+        <div class="vignette"></div>
+
+        <!-- BACKGROUND MUSIC TRACK (Synced with the 30s timeline) -->
+        <audio id="bgm" data-track="audio" data-start="0" data-end="30000" src="https://assets.mixkit.co/music/preview/mixkit-heavy-industrial-rock-beat-832.mp3" loop></audio>
+
+        <!-- ========================================== -->
+        <!-- SCENE 1: THE REVEAL (0s to 6s)             -->
+        <!-- ========================================== -->
+        <div id="scene-1" data-track="video" data-start="0" data-end="6000" class="absolute inset-0 opacity-100 flex items-center justify-center">
+            <!-- Background Panning Burger Image -->
+            <img id="s1-bg" class="absolute w-full h-full object-cover scale-110" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1920&auto=format&fit=crop" alt="Brutal Burger Zoom">
+            <!-- Dark Overlay -->
+            <div class="absolute inset-0 bg-black/60 z-10"></div>
+            
+            <!-- Graphic Overlays -->
+            <div class="relative z-20 text-center space-y-6 max-w-4xl px-12">
+                <p id="s1-badge" class="text-xs font-bold tracking-[0.3em] text-amber-400 uppercase opacity-0 transform translate-y-4">Gourmet Craft House</p>
+                <h1 id="s1-title" class="font-serif text-8xl font-black text-white leading-none opacity-0 transform translate-y-8">
+                    El Sabor <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 to-amber-400 text-glow">Real</span>
+                </h1>
+                <h2 id="s1-subtitle" class="font-serif text-5xl font-light italic text-zinc-400 opacity-0 transform translate-y-8">Sin atajos. Sin compromisos.</h2>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- SCENE 2: THE BACON CRUNCH (6s to 12s)      -->
+        <!-- ========================================== -->
+        <div id="scene-2" data-track="video" data-start="6000" class="absolute inset-0 opacity-0 flex items-center justify-between px-24">
+            <!-- Background Image -->
+            <img id="s2-bg" class="absolute w-full h-full object-cover scale-115" src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1920&auto=format&fit=crop" alt="Bacon Crunch Close-Up">
+            <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/40 to-transparent z-10"></div>
+            
+            <!-- Text Overlays -->
+            <div class="relative z-20 max-w-2xl space-y-6">
+                <span id="s2-badge" class="inline-flex items-center gap-2 px-3 py-1 bg-amber-400/10 border border-amber-400/20 text-sm font-bold text-amber-300 rounded-md">
+                    <i class="fa-solid fa-fire"></i> Crujiente perfecto
+                </span>
+                <h2 id="s2-title" class="font-serif text-7xl font-bold text-white leading-tight">Bacon Banana Crunch</h2>
+                <p id="s2-desc" class="text-zinc-300 text-xl font-light leading-relaxed">
+                    Bacon ahumado en leña de roble, cebolla frita crujiente y una salsa secreta de plátano caramelizado. Una experiencia sensorial completa.
+                </p>
+            </div>
+            
+            <!-- Floating price tag -->
+            <div id="s2-price" class="relative z-20 w-48 h-48 rounded-full border border-amber-400/30 bg-black/80 flex flex-col items-center justify-center shadow-gold-glow">
+                <span class="text-zinc-500 text-xs font-semibold tracking-widest uppercase">Precio</span>
+                <span class="font-serif text-4xl font-extrabold text-gold-300 mt-1">14.90€</span>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- SCENE 3: THE TRUFFLE LUXURY (12s to 18s)   -->
+        <!-- ========================================== -->
+        <div id="scene-3" data-track="video" data-start="12000" class="absolute inset-0 opacity-0 flex items-center justify-between px-24">
+            <img id="s3-bg" class="absolute w-full h-full object-cover scale-115" src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?q=80&w=1920&auto=format&fit=crop" alt="Black Truffle Close-Up">
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-black/40 to-black/85 z-10"></div>
+            
+            <!-- Floating price tag on left -->
+            <div id="s3-price" class="relative z-20 w-48 h-48 rounded-full border border-amber-400/30 bg-black/80 flex flex-col items-center justify-center shadow-gold-glow">
+                <span class="text-zinc-500 text-xs font-semibold tracking-widest uppercase">Gourmet</span>
+                <span class="font-serif text-4xl font-extrabold text-gold-300 mt-1">16.50€</span>
+            </div>
+
+            <!-- Text Overlays on right -->
+            <div class="relative z-20 max-w-2xl text-right space-y-6">
+                <span id="s3-badge" class="inline-flex items-center gap-2 px-3 py-1 bg-amber-400/10 border border-amber-400/20 text-sm font-bold text-amber-300 rounded-md">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i> Sofisticación pura
+                </span>
+                <h2 id="s3-title" class="font-serif text-7xl font-bold text-white leading-tight">Double Black Truffle</h2>
+                <p id="s3-desc" class="text-zinc-300 text-xl font-light leading-relaxed">
+                    Doble disco de carne smashed, provolone fundido y una suntuosa crema de trufa negra fresca. Un lujo culinario sin complejos.
+                </p>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- SCENE 4: NANO BANANA STUDIO (18s to 24s)   -->
+        <!-- ========================================== -->
+        <div id="scene-4" data-track="video" data-start="18000" class="absolute inset-0 opacity-0 flex items-center justify-center bg-gradient-to-b from-zinc-950 to-charcoal-950">
+            <div class="absolute -top-40 -left-40 w-96 h-96 bg-yellow-400/10 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-40 -right-40 w-96 h-96 bg-amber-500/10 rounded-full blur-3xl"></div>
+
+            <div class="max-w-6xl mx-auto px-12 grid grid-cols-2 gap-16 items-center relative z-20">
+                <!-- Left: Animated SVG -->
+                <div class="flex justify-center">
+                    <svg id="s4-graphic" class="w-80 h-80 banana-glow text-amber-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+                        <path d="M12 2C8.5 2 4.5 4.5 3 8c-1.5 3.5-1 7.5 1 10.5 1.5 2.5 4 4.5 7 5 3 .5 6.5-1 8.5-3.5 2-2.5 2.5-6.5 1.5-10-1-3.5-4-6.5-7.5-8-1-.5-2-.8-3.5-1z" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 2c-.5 1-1 3.5-.5 6s2.5 4.5 4 6.5c1.5 2 2 4.5 1.5 6-.5 1.5-2 2.5-3.5 3.5" stroke-linecap="round"/>
+                        <path d="M5 4l1 1M19 4l-1 1M4 20l1-1M20 20l-1-1M12 6V4M12 20v-2M4 12h2M18 12h2" stroke-linecap="round"/>
+                    </svg>
+                </div>
+                <!-- Right: Text details -->
+                <div class="space-y-6 text-left">
+                    <span id="s4-badge" class="text-xs font-bold tracking-[0.3em] text-gold-300 uppercase">Proporciones de Oro</span>
+                    <h2 id="s4-title" class="font-serif text-6xl font-black text-white leading-tight">Visualizado por Nano Banana</h2>
+                    <p id="s4-desc" class="text-zinc-400 text-xl font-light leading-relaxed">
+                        El modelo de IA Nano Banana equilibra los sabores, calcula la textura de cada capa y perfecciona la estética de tu hamburguesa para que disfrutes de un plato impecable.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- SCENE 5: CALL TO ACTION (24s to 30s)       -->
+        <!-- ========================================== -->
+        <div id="scene-5" data-track="video" data-start="24000" class="absolute inset-0 opacity-0 flex items-center justify-center">
+            <!-- Background Image -->
+            <img id="s5-bg" class="absolute w-full h-full object-cover scale-110" src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1920&auto=format&fit=crop" alt="Cinematic Finish">
+            <div class="absolute inset-0 bg-black/75 z-10"></div>
+            
+            <!-- Content -->
+            <div class="relative z-20 text-center space-y-8 max-w-4xl px-12">
+                <span id="s5-logo" class="font-serif text-5xl font-black tracking-tight text-white block">BRUTAL<span class="text-gold-300">.</span>BURGER</span>
+                <h1 id="s5-title" class="font-serif text-8xl font-black text-white leading-none">
+                    Muerde la <span class="text-transparent bg-clip-text bg-gradient-to-r from-gold-300 to-amber-400 text-glow">Perfección</span>
+                </h1>
+                <p id="s5-desc" class="text-zinc-300 text-xl font-light max-w-2xl mx-auto leading-relaxed">
+                    Carne madurada durante 45 días sobre pan brioche de mantequilla horneado a diario. Ordena hoy mismo y experimenta la diferencia.
+                </p>
+                <div id="s5-cta" class="inline-block px-12 py-5 bg-gold-300 text-charcoal-950 font-bold text-lg rounded-md shadow-gold-glow">
+                    Ordenar ahora en brutalburger.com
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Interactive Player Controls (Helper for visual checks) -->
+    <div class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-zinc-900/80 backdrop-blur border border-zinc-800 px-6 py-3 rounded-full flex items-center gap-6 z-50">
+        <button onclick="playAd()" class="text-gold-300 hover:text-white transition-colors text-lg"><i id="play-icon" class="fa-solid fa-play"></i></button>
+        <span id="time-display" class="font-mono text-zinc-400 text-sm">0.00s / 30.00s</span>
+        <input type="range" id="seek-bar" min="0" max="30000" value="0" class="w-80 accent-gold-300 bg-zinc-700 h-1 rounded-lg appearance-none">
+    </div>
+
+    <!-- GSAP Cinematic Orchestration Script (Matches HyperFrames Playback API) -->
+    <script>
+        // Scaling helper for 1080p fit-screen preview
+        function resizeCanvas() {
+            const canvas = document.getElementById('video-canvas');
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            const scale = Math.min(windowWidth / 1920, windowHeight / 1080) * 0.9;
+            canvas.style.transform = `scale(${scale})`;
+            canvas.style.left = `${(windowWidth - 1920 * scale) / 2}px`;
+            canvas.style.top = `${(windowHeight - 1080 * scale) / 2}px`;
+        }
+        window.addEventListener('resize', resizeCanvas);
+        resizeCanvas();
+
+        // GSAP Timeline Definition
+        const tl = gsap.timeline({ paused: true, onUpdate: updateUI });
+
+        // --- SCENE 1 ANIMATIONS (0s - 6s) ---
+        tl.to("#s1-bg", { scale: 1.0, duration: 6, ease: "sine.out" }, 0)
+          .to("#s1-badge", { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, 0.5)
+          .to("#s1-title", { opacity: 1, y: 0, duration: 1.5, ease: "power4.out" }, 1.0)
+          .to("#s1-subtitle", { opacity: 1, y: 0, duration: 1.5, ease: "power3.out" }, 1.5)
+          .to("#scene-1", { opacity: 0, duration: 1, ease: "power2.inOut" }, 5.0);
+
+        // --- SCENE 2 ANIMATIONS (6s - 12s) ---
+        tl.to("#scene-2", { opacity: 1, duration: 1, ease: "power2.inOut" }, 5.0)
+          .fromTo("#s2-bg", { scale: 1.15, x: 50 }, { scale: 1.0, x: 0, duration: 6, ease: "sine.out" }, 5.0)
+          .fromTo("#s2-badge", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, 5.8)
+          .fromTo("#s2-title", { opacity: 0, x: -50 }, { opacity: 1, x: 0, duration: 1.5, ease: "power4.out" }, 6.2)
+          .fromTo("#s2-desc", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.5, ease: "power3.out" }, 6.6)
+          .fromTo("#s2-price", { opacity: 0, scale: 0.5, rotate: -45 }, { opacity: 1, scale: 1.0, rotate: 0, duration: 1.5, ease: "back.out(1.5)" }, 7.0)
+          .to("#scene-2", { opacity: 0, duration: 1, ease: "power2.inOut" }, 11.0);
+
+        // --- SCENE 3 ANIMATIONS (12s - 18s) ---
+        tl.to("#scene-3", { opacity: 1, duration: 1, ease: "power2.inOut" }, 11.0)
+          .fromTo("#s3-bg", { scale: 1.15, x: -50 }, { scale: 1.0, x: 0, duration: 6, ease: "sine.out" }, 11.0)
+          .fromTo("#s3-badge", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, 11.8)
+          .fromTo("#s3-title", { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 1.5, ease: "power4.out" }, 12.2)
+          .fromTo("#s3-desc", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.5, ease: "power3.out" }, 12.6)
+          .fromTo("#s3-price", { opacity: 0, scale: 0.5, rotate: 45 }, { opacity: 1, scale: 1.0, rotate: 0, duration: 1.5, ease: "back.out(1.5)" }, 13.0)
+          .to("#scene-3", { opacity: 0, duration: 1, ease: "power2.inOut" }, 17.0);
+
+        // --- SCENE 4 ANIMATIONS (18s - 24s) ---
+        tl.to("#scene-4", { opacity: 1, duration: 1, ease: "power2.inOut" }, 17.0)
+          .fromTo("#s4-graphic", { scale: 0.4, rotate: -180, opacity: 0 }, { scale: 1, rotate: 0, opacity: 1, duration: 2, ease: "elastic.out(1, 0.75)" }, 17.5)
+          .fromTo("#s4-badge", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, 18.0)
+          .fromTo("#s4-title", { opacity: 0, x: 50 }, { opacity: 1, x: 0, duration: 1.5, ease: "power4.out" }, 18.4)
+          .fromTo("#s4-desc", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.5, ease: "power3.out" }, 18.8)
+          .to("#scene-4", { opacity: 0, duration: 1, ease: "power2.inOut" }, 23.0);
+
+        // --- SCENE 5 ANIMATIONS (24s - 30s) ---
+        tl.to("#scene-5", { opacity: 1, duration: 1, ease: "power2.inOut" }, 23.0)
+          .to("#s5-bg", { scale: 1.0, duration: 6, ease: "sine.out" }, 23.0)
+          .fromTo("#s5-logo", { opacity: 0, y: -30 }, { opacity: 1, y: 0, duration: 1.2, ease: "power3.out" }, 24.5)
+          .fromTo("#s5-title", { opacity: 0, scale: 0.8 }, { opacity: 1, scale: 1, duration: 1.5, ease: "power4.out" }, 25.0)
+          .fromTo("#s5-desc", { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 1.5, ease: "power3.out" }, 25.5)
+          .fromTo("#s5-cta", { opacity: 0, scale: 0.5 }, { opacity: 1, scale: 1.0, duration: 1.5, ease: "back.out(1.5)" }, 26.0);
+
+        // Player Controls Code
+        const seekBar = document.getElementById('seek-bar');
+        const timeDisplay = document.getElementById('time-display');
+        const playIcon = document.getElementById('play-icon');
+        const bgm = document.getElementById('bgm');
+
+        function playAd() {
+            if (tl.isActive()) {
+                tl.pause();
+                bgm.pause();
+                playIcon.className = "fa-solid fa-play";
+            } else {
+                if (tl.progress() === 1) tl.restart();
+                else tl.play();
+                bgm.play().catch(() => {}); // Safely play audio
+                playIcon.className = "fa-solid fa-pause";
+            }
+        }
+
+        seekBar.addEventListener('input', () => {
+            const time = seekBar.value;
+            tl.seek(time / 1000);
+            bgm.currentTime = time / 1000;
+        });
+
+        function updateUI() {
+            const timeMs = tl.time() * 1000;
+            seekBar.value = timeMs;
+            timeDisplay.textContent = `${(timeMs / 1000).toFixed(2)}s / 30.00s`;
+            if (tl.progress() === 1) {
+                playIcon.className = "fa-solid fa-play";
+                bgm.pause();
+            }
+        }
+    </script>
+</body>
+</html>

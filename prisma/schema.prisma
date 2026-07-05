@@ -1,0 +1,33 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider        = "prisma-client-js"
+  engineType      = "library"
+  previewFeatures = ["multiSchema"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+  schemas  = ["ccmfalla"]
+}
+
+model Reserva {
+  id                    String   @id @default(uuid())
+  nombre                String
+  email                 String
+  telefono              String
+  numeroPlazas          Int
+  tipoHabitacion        String   // "doble" | "individual"
+  importeTotal          Float
+  estado                String   // "pendiente_pago" | "pagada" | "cancelada" | "error_pago"
+  stripeSessionId       String?  @unique
+  stripePaymentIntentId String?  @unique
+  comentarios           String?
+  createdAt             DateTime @default(now())
+  updatedAt             DateTime @updatedAt
+
+  @@map("ReservaViajeSevillaSeptiembre")
+  @@schema("ccmfalla")
+}

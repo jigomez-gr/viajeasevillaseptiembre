@@ -1,0 +1,14 @@
+{
+  "name": "remotion-ad-burger",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "render": "remotion render Ad out/ad.mp4"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.141",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remotion": "^4.0.141"
+  }
+}
