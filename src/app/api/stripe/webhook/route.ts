@@ -75,8 +75,9 @@ export async function POST(request: Request) {
     const sig = request.headers.get("stripe-signature");
 
     if (!sig || !endpointSecret) {
-        // If webhook signing secret is not configured, we allow manual trigger in development
-        if (process.env.NODE_ENV !== "production") {
+        // If webhook signing secret is not configured, we allow manual trigger in development or if Stripe is in test mode
+        const isTestMode = process.env.STRIPE_SECRET_KEY?.startsWith("sk_test_") || false;
+        if (process.env.NODE_ENV !== "production" || isTestMode) {
             try {
                 const bodyObj = JSON.parse(rawBody);
                 if (bodyObj.action === "simulate_success" && bodyObj.reservaId) {
