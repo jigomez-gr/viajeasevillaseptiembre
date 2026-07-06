@@ -31,3 +31,53 @@ model Reserva {
   @@map("ReservaViajeSevillaSeptiembre")
   @@schema("ccmfalla")
 }
+
+model RolUsuario {
+  idrolusuario Int       @id @default(autoincrement())
+  descripcion  String?   @db.VarChar(50)
+  usuarios     Usuario[]
+
+  @@map("rolusuario")
+  @@schema("ccmfalla")
+}
+
+model Usuario {
+  idusuario               Int            @id @default(autoincrement())
+  numerodocumentoidentidad String?        @db.VarChar(50)
+  nombre                  String?        @db.VarChar(50)
+  apellido                String?        @db.VarChar(50)
+  correo                  String?        @db.VarChar(50) @unique
+  clave                   String?        @db.VarChar(50)
+  idrolusuario            Int?
+  rol                     RolUsuario?    @relation(fields: [idrolusuario], references: [idrolusuario], onDelete: NoAction, onUpdate: NoAction)
+  fechacreacion           DateTime?      @default(now())
+  movil                   String?        @db.VarChar(50)
+  telegramId              String?        @unique @map("telegram_id") @db.VarChar(50)
+  telegramUsername        String?        @map("telegram_username") @db.VarChar(100)
+  codigoVerificacion      String?        @map("codigo_verificacion") @db.VarChar(6)
+  fechaExpiracionCodigo   DateTime?      @map("fecha_expiracion_codigo")
+  intentosVerificacion    Int?           @default(0) @map("intentos_verificacion")
+  telegramVerificado      Boolean?       @default(false) @map("telegram_verificado")
+  resumeUrl               String?        @map("resume_url") @db.VarChar(500)
+  estadoVerificacion      String?        @default("ninguno") @map("estado_verificacion") @db.VarChar(50)
+  pagos                   PagosUsuario[]
+
+  @@map("usuario")
+  @@schema("ccmfalla")
+}
+
+model PagosUsuario {
+  idpago           Int       @id @default(autoincrement())
+  codigoViaje      String?   @map("codigo_viaje") @db.VarChar(50)
+  fechaSalida      DateTime? @map("fecha_salida") @db.Date
+  idusuario        Int?
+  usuario          Usuario?  @relation(fields: [idusuario], references: [idusuario], onDelete: NoAction, onUpdate: NoAction)
+  descripcionViaje String?   @map("descripcion_viaje") @db.VarChar(500)
+  cantidadAbonada  Float?    @map("cantidad_abonada")
+  procesado        String?   @default("N") @db.VarChar(1)
+  fechaPago        DateTime? @default(now()) @map("fecha_pago")
+  stripeSessionId  String?   @map("stripe_session_id") @db.VarChar(255)
+
+  @@map("pagosusuarios")
+  @@schema("ccmfalla")
+}

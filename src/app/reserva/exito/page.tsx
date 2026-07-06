@@ -3,12 +3,32 @@
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { CheckCircle, Calendar, Users, Home, MapPin, Mail, Phone } from "lucide-react";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 
 function ExitoContent() {
     const searchParams = useSearchParams();
     const sessionId = searchParams.get("session_id");
     const isSimulated = searchParams.get("simulated") === "true";
+    const amount = searchParams.get("amount");
+    const reservaId = searchParams.get("reserva_id");
+
+    useEffect(() => {
+        if (isSimulated && reservaId) {
+            // Trigger the simulated webhook execution
+            fetch("/api/stripe/webhook", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "x-simulate-secret": "1"
+                },
+                body: JSON.stringify({
+                    action: "simulate_success",
+                    reservaId,
+                    amount
+                })
+            }).catch(err => console.error("Error triggering simulation webhook:", err));
+        }
+    }, [isSimulated, reservaId, amount]);
 
     return (
         <main className="min-h-screen bg-[#FAF9F6] py-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center font-sans">

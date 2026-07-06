@@ -88,15 +88,64 @@ export async function POST(request: Request) {
                         return NextResponse.json({ error: "Reserva no encontrada" }, { status: 404 });
                     }
 
-                    const updatedReserva = await prisma.reserva.update({
-                        where: { id: bodyObj.reservaId },
+                    const checkoutAmount = bodyObj.amount ? parseFloat(bodyObj.amount) : reserva.importeTotal;
+
+                    // Verify or create traveler usuario
+                    let user = await prisma.usuario.findUnique({
+                        where: { correo: reserva.email },
+                    });
+
+                    if (!user) {
+                        user = await prisma.usuario.create({
+                            data: {
+                                correo: reserva.email,
+                                nombre: reserva.nombre,
+                                movil: reserva.telefono,
+                                idrolusuario: 3,
+                                estadoVerificacion: "verificado",
+                            },
+                        });
+                    }
+
+                    // Create payments record
+                    const mockSessionId = "simulated_session_" + Date.now();
+                    await prisma.pagosUsuario.create({
                         data: {
-                            estado: "pagada",
-                            stripePaymentIntentId: "simulated_intent_" + Date.now(),
+                            codigoViaje: "SEVILLA_SEP_2026",
+                            fechaSalida: new Date("2026-08-31"),
+                            idusuario: user.idusuario,
+                            descripcionViaje: `Pago del viaje registrado físicamente (${checkoutAmount} €)`,
+                            cantidadAbonada: checkoutAmount,
+                            procesado: "N",
+                            stripeSessionId: mockSessionId,
                         },
                     });
 
-                    simulateEmails(updatedReserva);
+                    // Check total paid
+                    const dbPayments = await prisma.pagosUsuario.findMany({
+                        where: { idusuario: user.idusuario },
+                    });
+                    const totalPaid = dbPayments.reduce((acc: number, curr: any) => acc + (curr.cantidadAbonada ?? 0), 0);
+
+                    // Update reserva state
+                    const shouldMarkPaid = totalPaid >= (reserva.importeTotal - 0.01);
+                    const updatedReserva = await prisma.reserva.update({
+                        where: { id: bodyObj.reservaId },
+                        data: {
+                            estado: shouldMarkPaid ? "pagada" : "pendiente_pago",
+                            stripePaymentIntentId: "simulated_intent_" + Date.now(),
+                            stripeSessionId: mockSessionId,
+                        },
+                    });
+
+                    // Log simulation email info detail
+                    console.log(`[PAGO PARCIAL SIMULADO] Se han pagado ${checkoutAmount} €. Total abonado: ${totalPaid} / ${reserva.importeTotal} €.`);
+                    simulateEmails({
+                        ...updatedReserva,
+                        currentPayment: checkoutAmount,
+                        totalPaid,
+                        remaining: Math.max(0, reserva.importeTotal - totalPaid),
+                    });
                     return NextResponse.json({ status: "success", info: "Simulated success manually" });
                 }
             } catch (err: any) {
@@ -128,6 +177,7 @@ export async function POST(request: Request) {
             case "checkout.session.completed": {
                 const session = event.data.object as Stripe.Checkout.Session;
                 const reservaId = session.metadata?.reservaId;
+                const metadataAmount = session.metadata?.amount;
                 const paymentIntentId = typeof session.payment_intent === "string"
                     ? session.payment_intent
                     : session.payment_intent?.toString() || null;
@@ -146,21 +196,61 @@ export async function POST(request: Request) {
                     break;
                 }
 
-                if (reserva.estado === "pagada") {
-                    console.log(`La reserva ${reservaId} ya estaba marcada como PAGADA.`);
-                    break;
+                let user = await prisma.usuario.findUnique({
+                    where: { correo: reserva.email },
+                });
+
+                if (!user) {
+                    user = await prisma.usuario.create({
+                        data: {
+                            correo: reserva.email,
+                            nombre: reserva.nombre,
+                            movil: reserva.telefono,
+                            idrolusuario: 3,
+                            estadoVerificacion: "verificado",
+                        },
+                    });
                 }
+
+                const checkoutAmount = metadataAmount ? parseFloat(metadataAmount) : reserva.importeTotal;
+
+                // Create physical payment log
+                await prisma.pagosUsuario.create({
+                    data: {
+                        codigoViaje: "SEVILLA_SEP_2026",
+                        fechaSalida: new Date("2026-08-31"),
+                        idusuario: user.idusuario,
+                        descripcionViaje: `Pago Fraccionado vía Stripe`,
+                        cantidadAbonada: checkoutAmount,
+                        procesado: "N",
+                        stripeSessionId: session.id,
+                    },
+                });
+
+                // Compute total paid
+                const dbPayments = await prisma.pagosUsuario.findMany({
+                    where: { idusuario: user.idusuario },
+                });
+                const totalPaid = dbPayments.reduce((acc: number, curr: any) => acc + (curr.cantidadAbonada ?? 0), 0);
+
+                const shouldMarkPaid = totalPaid >= (reserva.importeTotal - 0.01);
 
                 const updated = await prisma.reserva.update({
                     where: { id: reservaId },
                     data: {
-                        estado: "pagada",
+                        estado: shouldMarkPaid ? "pagada" : "pendiente_pago",
                         stripePaymentIntentId: paymentIntentId,
+                        stripeSessionId: session.id,
                     },
                 });
 
-                console.log(`Reserva ${reservaId} marcada satisfactoriamente como PAGADA.`);
-                simulateEmails(updated);
+                console.log(`Reserva ${reservaId} marcada satisfactoriamente. Total abonado: ${totalPaid} €.`);
+                simulateEmails({
+                    ...updated,
+                    currentPayment: checkoutAmount,
+                    totalPaid,
+                    remaining: Math.max(0, reserva.importeTotal - totalPaid),
+                });
                 break;
             }
 
