@@ -84,15 +84,17 @@ export async function POST(request: Request) {
         const unitPrice = tipoHabitacion === "individual" ? precioConSuplemento : precioBase;
         const totalAmount = plazasCount * unitPrice;
 
+        const normalizedEmail = email.trim().toLowerCase();
+
         // Verify or create User registration
         let user = await prisma.usuario.findUnique({
-            where: { correo: email },
+            where: { correo: normalizedEmail },
         });
 
         if (!user) {
             user = await prisma.usuario.create({
                 data: {
-                    correo: email,
+                    correo: normalizedEmail,
                     nombre,
                     movil: telefono,
                     idrolusuario: 3,
@@ -102,7 +104,7 @@ export async function POST(request: Request) {
         } else {
             // Update name and phone
             user = await prisma.usuario.update({
-                where: { correo: email },
+                where: { correo: normalizedEmail },
                 data: {
                     nombre,
                     movil: telefono,
@@ -114,7 +116,7 @@ export async function POST(request: Request) {
         const reserva = await prisma.reserva.create({
             data: {
                 nombre,
-                email,
+                email: normalizedEmail,
                 telefono,
                 numeroPlazas: plazasCount,
                 tipoHabitacion,

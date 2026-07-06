@@ -15,6 +15,8 @@ interface UserSession {
         nombre?: string;
         apellido?: string;
         movil?: string;
+        telegramUsername?: string;
+        telegramId?: string;
         estadoVerificacion?: string;
     };
     reserva?: {
@@ -54,6 +56,15 @@ export default function BookingForm({ initialAvailablePlazas }: BookingFormProps
     const [otpSuccessMsg, setOtpSuccessMsg] = useState<string | null>(null);
     const [debugCode, setDebugCode] = useState<string | null>(null);
 
+    // Traveler Profile Update Fields
+    const [userNombre, setUserNombre] = useState("");
+    const [userApellido, setUserApellido] = useState("");
+    const [userMovil, setUserMovil] = useState("");
+    const [userTelegramUsername, setUserTelegramUsername] = useState("");
+    const [userTelegramId, setUserTelegramId] = useState("");
+    const [profileSuccessMsg, setProfileSuccessMsg] = useState<string | null>(null);
+    const [profileLoading, setProfileLoading] = useState(false);
+
     // Initial Registration Fields
     const [nombre, setNombre] = useState("");
     const [telefono, setTelefono] = useState("");
@@ -81,6 +92,12 @@ export default function BookingForm({ initialAvailablePlazas }: BookingFormProps
                 setSession(data);
                 if (data.loggedIn && data.user) {
                     setAuthEmail(data.user.correo);
+                    setUserNombre(data.user.nombre || "");
+                    setUserApellido(data.user.apellido || "");
+                    setUserMovil(data.user.movil || "");
+                    setUserTelegramUsername(data.user.telegramUsername || "");
+                    setUserTelegramId(data.user.telegramId || "");
+
                     if (data.reserva) {
                         setNombre(data.reserva.nombre);
                         setTelefono(data.reserva.telefono);
@@ -88,7 +105,8 @@ export default function BookingForm({ initialAvailablePlazas }: BookingFormProps
                         setTipoHabitacion(data.reserva.tipoHabitacion);
                         setComentarios(data.reserva.comentarios || "");
                     } else {
-                        setNombre(data.user.nombre || "");
+                        // Pre-populate fields from profile
+                        setNombre(`${data.user.nombre || ""} ${data.user.apellido || ""}`.trim());
                         setTelefono(data.user.movil || "");
                     }
                 }
@@ -202,6 +220,7 @@ export default function BookingForm({ initialAvailablePlazas }: BookingFormProps
     // Logout
     const handleLogout = async () => {
         setError(null);
+        setProfileSuccessMsg(null);
         try {
             const res = await fetch("/api/auth/session", { method: "DELETE" });
             if (res.ok) {
@@ -213,9 +232,45 @@ export default function BookingForm({ initialAvailablePlazas }: BookingFormProps
                 setNumeroPlazas(1);
                 setTipoHabitacion("doble");
                 setComentarios("");
+                setUserNombre("");
+                setUserApellido("");
+                setUserMovil("");
+                setUserTelegramUsername("");
+                setUserTelegramId("");
             }
         } catch (err) {
             console.error("Logout failed:", err);
+        }
+    };
+
+    // Save travel user profile details
+    const handleSaveProfile = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setError(null);
+        setProfileSuccessMsg(null);
+        setProfileLoading(true);
+        try {
+            const res = await fetch("/api/auth/profile", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    nombre: userNombre,
+                    apellido: userApellido,
+                    movil: userMovil,
+                    telegramUsername: userTelegramUsername,
+                    telegramId: userTelegramId,
+                }),
+            });
+
+            const data = await res.json();
+            if (!res.ok) throw new Error(data.error || "Error al actualizar perfil.");
+
+            setProfileSuccessMsg("¡Tus datos de perfil se han guardado correctamente!");
+            await loadSession();
+        } catch (err: any) {
+            setError(err.message);
+        } finally {
+            setProfileLoading(false);
         }
     };
 
@@ -484,6 +539,97 @@ export default function BookingForm({ initialAvailablePlazas }: BookingFormProps
                         </button>
                     </div>
 
+                    <form onSubmit={handleSaveProfile} className="bg-white border border-[#C5A059]/30 rounded-lg p-5 space-y-4">
+                        <div className="flex justify-between items-center border-b border-[#C5A059]/10 pb-2">
+                            <h4 className="font-serif text-base font-bold text-[#800020] flex items-center gap-2">
+                                <User className="w-4 h-4 text-[#C5A059]" />
+                                Tus Datos Personales (Perfil de Viajero)
+                            </h4>
+                            {profileSuccessMsg && (
+                                <span className="text-xs text-green-600 font-medium">{profileSuccessMsg}</span>
+                            )}
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="space-y-1">
+                                <label className="block text-xs font-semibold text-[#1C1C1C]/90">Nombre</label>
+                                <input
+                                    type="text"
+                                    value={userNombre}
+                                    onChange={(e) => setUserNombre(e.target.value)}
+                                    placeholder="Nombre"
+                                    className="block w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm text-[#1C1C1C] placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#800020] focus:border-transparent transition"
+                                />
+                            </div>
+                            <div className="space-y-1">
+                                <label className="block text-xs font-semibold text-[#1C1C1C]/90">Apellidos</label>
+                                <input
+                                    type="text"
+                                    value={userApellido}
+                                    onChange={(e) => setUserApellido(e.target.value)}
+                                    placeholder="Apellidos"
+                                    className="block w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm text-[#1C1C1C] placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#800020] focus:border-transparent transition"
+                                />
+                            </div>
+                            <div className="space-y-1">
+                                <label className="block text-xs font-semibold text-[#1C1C1C]/90">Teléfono Móvil</label>
+                                <input
+                                    type="tel"
+                                    value={userMovil}
+                                    onChange={(e) => setUserMovil(e.target.value)}
+                                    placeholder="Teléfono móvil"
+                                    className="block w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm text-[#1C1C1C] placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#800020] focus:border-transparent transition"
+                                />
+                            </div>
+                            <div className="space-y-1">
+                                <label className="block text-xs font-semibold text-[#101010]/95">Email (No editable)</label>
+                                <input
+                                    disabled
+                                    type="email"
+                                    value={authEmail}
+                                    className="block w-full px-3 py-2 bg-stone-100 border border-stone-200 rounded-md text-sm text-stone-500 cursor-not-allowed"
+                                />
+                            </div>
+                            <div className="space-y-1">
+                                <label className="block text-xs font-semibold text-[#1C1C1C]/90">Telegram Username</label>
+                                <input
+                                    type="text"
+                                    value={userTelegramUsername}
+                                    onChange={(e) => setUserTelegramUsername(e.target.value)}
+                                    placeholder="Ej. mi_usuario"
+                                    className="block w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm text-[#1C1C1C] placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#800020] focus:border-transparent transition"
+                                />
+                            </div>
+                            <div className="space-y-1">
+                                <label className="block text-xs font-semibold text-[#1C1C1C]/90">Telegram ID</label>
+                                <input
+                                    type="text"
+                                    value={userTelegramId}
+                                    onChange={(e) => setUserTelegramId(e.target.value)}
+                                    placeholder="Ej. 12345678"
+                                    className="block w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm text-[#1C1C1C] placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#800020] focus:border-transparent transition"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="flex justify-end">
+                            <button
+                                type="submit"
+                                disabled={profileLoading}
+                                className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-semibold rounded-md shadow-md text-white bg-[#800020] hover:bg-[#800020]/95 transition disabled:opacity-50"
+                            >
+                                {profileLoading ? (
+                                    <>
+                                        <Loader2 className="w-3.5 h-3.5 mr-2 animate-spin" />
+                                        Guardando...
+                                    </>
+                                ) : (
+                                    "Actualizar Perfil"
+                                )}
+                            </button>
+                        </div>
+                    </form>
+
                     <form onSubmit={handleSignUpTrip} className="space-y-6">
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                             {/* Nombre y Apellidos */}
@@ -744,6 +890,98 @@ export default function BookingForm({ initialAvailablePlazas }: BookingFormProps
                             </span>
                         </div>
                     </div>
+
+                    {/* SECCIÓN DE PERFIL O DATOS PERSONALES */}
+                    <form onSubmit={handleSaveProfile} className="bg-white border border-[#C5A059]/30 rounded-lg p-5 space-y-4">
+                        <div className="flex justify-between items-center border-b border-[#C5A059]/10 pb-2">
+                            <h4 className="font-serif text-base font-bold text-[#800020] flex items-center gap-2">
+                                <User className="w-4 h-4 text-[#C5A059]" />
+                                Tus Datos Personales (Perfil de Viajero)
+                            </h4>
+                            {profileSuccessMsg && (
+                                <span className="text-xs text-green-600 font-medium">{profileSuccessMsg}</span>
+                            )}
+                        </div>
+
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div className="space-y-1">
+                                <label className="block text-xs font-semibold text-[#1C1C1C]/90">Nombre</label>
+                                <input
+                                    type="text"
+                                    value={userNombre}
+                                    onChange={(e) => setUserNombre(e.target.value)}
+                                    placeholder="Nombre"
+                                    className="block w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm text-[#1C1C1C] placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#800020] focus:border-transparent transition"
+                                />
+                            </div>
+                            <div className="space-y-1">
+                                <label className="block text-xs font-semibold text-[#1C1C1C]/90">Apellidos</label>
+                                <input
+                                    type="text"
+                                    value={userApellido}
+                                    onChange={(e) => setUserApellido(e.target.value)}
+                                    placeholder="Apellidos"
+                                    className="block w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm text-[#1C1C1C] placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#800020] focus:border-transparent transition"
+                                />
+                            </div>
+                            <div className="space-y-1">
+                                <label className="block text-xs font-semibold text-[#1C1C1C]/90">Teléfono Móvil</label>
+                                <input
+                                    type="tel"
+                                    value={userMovil}
+                                    onChange={(e) => setUserMovil(e.target.value)}
+                                    placeholder="Teléfono móvil"
+                                    className="block w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm text-[#1C1C1C] placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#800020] focus:border-transparent transition"
+                                />
+                            </div>
+                            <div className="space-y-1">
+                                <label className="block text-xs font-semibold text-[#101010]/95">Email (No editable)</label>
+                                <input
+                                    disabled
+                                    type="email"
+                                    value={authEmail}
+                                    className="block w-full px-3 py-2 bg-stone-100 border border-stone-200 rounded-md text-sm text-stone-500 cursor-not-allowed"
+                                />
+                            </div>
+                            <div className="space-y-1">
+                                <label className="block text-xs font-semibold text-[#1C1C1C]/90">Telegram Username</label>
+                                <input
+                                    type="text"
+                                    value={userTelegramUsername}
+                                    onChange={(e) => setUserTelegramUsername(e.target.value)}
+                                    placeholder="Ej. mi_usuario"
+                                    className="block w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm text-[#1C1C1C] placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#800020] focus:border-transparent transition"
+                                />
+                            </div>
+                            <div className="space-y-1">
+                                <label className="block text-xs font-semibold text-[#1C1C1C]/90">Telegram ID</label>
+                                <input
+                                    type="text"
+                                    value={userTelegramId}
+                                    onChange={(e) => setUserTelegramId(e.target.value)}
+                                    placeholder="Ej. 12345678"
+                                    className="block w-full px-3 py-2 bg-white border border-stone-300 rounded-md text-sm text-[#1C1C1C] placeholder-stone-400 focus:outline-none focus:ring-2 focus:ring-[#800020] focus:border-transparent transition"
+                                />
+                            </div>
+                        </div>
+
+                        <div className="flex justify-end">
+                            <button
+                                type="submit"
+                                disabled={profileLoading}
+                                className="inline-flex items-center justify-center px-4 py-2 border border-transparent text-sm font-semibold rounded-md shadow-md text-white bg-[#800020] hover:bg-[#800020]/95 transition disabled:opacity-50"
+                            >
+                                {profileLoading ? (
+                                    <>
+                                        <Loader2 className="w-3.5 h-3.5 mr-2 animate-spin" />
+                                        Guardando...
+                                    </>
+                                ) : (
+                                    "Actualizar Perfil"
+                                )}
+                            </button>
+                        </div>
+                    </form>
 
                     {/* Installments checkout form */}
                     {remainingBalance > 0 ? (

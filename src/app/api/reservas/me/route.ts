@@ -27,10 +27,11 @@ export async function GET() {
             return NextResponse.json({ loggedIn: false });
         }
 
+        const userMailClean = (user.correo ?? "").trim().toLowerCase();
         // Find reservation (Reserva) corresponding to this traveler by email
         const reserva = await prisma.reserva.findFirst({
             where: {
-                email: user.correo ?? "",
+                email: userMailClean,
             },
             orderBy: {
                 createdAt: "desc",
@@ -57,6 +58,8 @@ export async function GET() {
                 nombre: user.nombre,
                 apellido: user.apellido,
                 movil: user.movil,
+                telegramUsername: user.telegramUsername,
+                telegramId: user.telegramId,
                 estadoVerificacion: user.estadoVerificacion,
             },
             reserva,

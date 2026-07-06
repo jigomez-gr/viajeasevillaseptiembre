@@ -14,18 +14,20 @@ export async function POST(req: Request) {
             );
         }
 
+        const normalizedEmail = email.trim().toLowerCase();
+
         // Generate 6-digit OTP code (e.g. 849203)
         const code = Math.floor(100000 + Math.random() * 900000).toString();
         const expiration = new Date(Date.now() + 15 * 60 * 1000); // 15 minutes
 
         // Check if user exists under ccmfalla schema
         const existingUser = await prisma.usuario.findUnique({
-            where: { correo: email },
+            where: { correo: normalizedEmail },
         });
 
         if (existingUser) {
             await prisma.usuario.update({
-                where: { correo: email },
+                where: { correo: normalizedEmail },
                 data: {
                     codigoVerificacion: code,
                     fechaExpiracionCodigo: expiration,
@@ -36,7 +38,7 @@ export async function POST(req: Request) {
             // Create user as Traveler (idrolusuario = 3)
             await prisma.usuario.create({
                 data: {
-                    correo: email,
+                    correo: normalizedEmail,
                     idrolusuario: 3,
                     codigoVerificacion: code,
                     fechaExpiracionCodigo: expiration,

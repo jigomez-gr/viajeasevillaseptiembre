@@ -15,8 +15,10 @@ export async function POST(req: Request) {
             );
         }
 
+        const normalizedEmail = email.trim().toLowerCase();
+
         const user = await prisma.usuario.findUnique({
-            where: { correo: email },
+            where: { correo: normalizedEmail },
         });
 
         if (!user) {
@@ -43,7 +45,7 @@ export async function POST(req: Request) {
         if (codeExpired || user.codigoVerificacion !== code) {
             // Increment verification attempts
             await prisma.usuario.update({
-                where: { correo: email },
+                where: { correo: normalizedEmail },
                 data: {
                     intentosVerificacion: limitAttempts + 1,
                 },
@@ -56,7 +58,7 @@ export async function POST(req: Request) {
 
         // Update user: verified!
         const updatedUser = await prisma.usuario.update({
-            where: { correo: email },
+            where: { correo: normalizedEmail },
             data: {
                 estadoVerificacion: "verificado",
                 codigoVerificacion: null,
