@@ -13,7 +13,8 @@ function ExitoContent() {
     const reservaId = searchParams.get("reserva_id");
 
     useEffect(() => {
-        if (isSimulated && reservaId) {
+        const isStripeTestSession = sessionId?.startsWith("cs_test_") || false;
+        if ((isSimulated || isStripeTestSession) && reservaId) {
             // Trigger the simulated webhook execution
             fetch("/api/stripe/webhook", {
                 method: "POST",
@@ -24,11 +25,12 @@ function ExitoContent() {
                 body: JSON.stringify({
                     action: "simulate_success",
                     reservaId,
-                    amount
+                    amount,
+                    sessionId
                 })
             }).catch(err => console.error("Error triggering simulation webhook:", err));
         }
-    }, [isSimulated, reservaId, amount]);
+    }, [isSimulated, sessionId, reservaId, amount]);
 
     return (
         <main className="min-h-screen bg-[#FAF9F6] py-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center font-sans">

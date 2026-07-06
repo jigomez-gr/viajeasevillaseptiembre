@@ -108,8 +108,20 @@ export async function POST(request: Request) {
                         });
                     }
 
+                    const mockSessionId = bodyObj.sessionId || "simulated_session_" + Date.now();
+
+                    // Check if payment with this session ID already exists to prevent duplicate entries on refresh
+                    const existingPayment = await prisma.pagosUsuario.findFirst({
+                        where: {
+                            stripeSessionId: mockSessionId,
+                        },
+                    });
+
+                    if (existingPayment) {
+                        return NextResponse.json({ status: "success", info: "Payment already registered previously" });
+                    }
+
                     // Create payments record
-                    const mockSessionId = "simulated_session_" + Date.now();
                     await prisma.pagosUsuario.create({
                         data: {
                             codigoViaje: "SEVILLA_SEP_2026",
