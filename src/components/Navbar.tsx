@@ -63,27 +63,37 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Header Layout */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between md:hidden">
-                {/* Logo side */}
-                <a href="#" className="flex items-center space-x-2.5">
-                    <div className="flex items-end space-x-1 h-7">
-                        <div className="w-[3px] bg-[#800020] h-4 rounded-sm"></div>
-                        <div className="w-[3px] bg-[#800020] h-7 rounded-sm"></div>
-                        <div className="w-[3px] bg-[#800020] h-5 rounded-sm"></div>
-                    </div>
-                    <div className="flex flex-col text-left leading-none">
-                        <span className="text-[7.5px] tracking-wider text-[#C5A059] uppercase font-semibold">CICLO DE CONCIERTOS</span>
-                        <span className="font-serif text-sm font-bold text-[#800020] uppercase">Manuel de Falla</span>
-                    </div>
-                </a>
-                {/* Toggle button */}
-                <button
-                    onClick={() => setIsOpen(!isOpen)}
-                    className="text-[#1C1C1C] hover:text-[#800020] focus:outline-none"
-                    aria-label="Toggle Menu"
-                >
-                    {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-                </button>
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between md:hidden relative">
+                {/* Left side: Hamburger toggle button */}
+                <div className="w-10 flex justify-start">
+                    <button
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="text-[#1C1C1C] hover:text-[#800020] focus:outline-none"
+                        aria-label="Toggle Menu"
+                    >
+                        {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6 text-stone-700" />}
+                    </button>
+                </div>
+
+                {/* Center: Logo (Centered) */}
+                <div className="flex-1 flex justify-center">
+                    <a href="#" className="flex items-center space-x-2">
+                        <div className="flex items-end space-x-0.5 h-6">
+                            <div className="w-[2.5px] bg-[#800020] h-3.5 rounded-sm"></div>
+                            <div className="w-[2.5px] bg-[#800020] h-5 rounded-sm"></div>
+                            <div className="w-[2.5px] bg-[#800020] h-4 rounded-sm"></div>
+                        </div>
+                        <div className="flex flex-col text-left leading-tight">
+                            <span className="text-[6.5px] tracking-wider text-[#C5A059] uppercase font-bold">CICLO DE CONCIERTOS</span>
+                            <span className="font-serif text-[11px] font-black text-[#800020] uppercase tracking-wide leading-none">Manuel de Falla</span>
+                        </div>
+                    </a>
+                </div>
+
+                {/* Right side: spacer to keep center logo visually aligned */}
+                <div className="w-10 flex justify-end">
+                    {/* Empty placeholder */}
+                </div>
             </div>
 
             {/* Mobile Drawer Overlay */}

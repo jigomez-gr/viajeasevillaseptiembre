@@ -35,3 +35,6 @@ next-env.d.ts
 # system files
 .DS_Store
 Thumbs.db
+
+# raw audio folder
+/sonidos_mp3

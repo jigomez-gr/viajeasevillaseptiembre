@@ -6,6 +6,7 @@ import Navbar from "@/components/Navbar";
 import ItineraryTimeline from "@/components/ItineraryTimeline";
 import VideoGallery from "@/components/VideoGallery";
 import BookingForm from "@/components/BookingForm";
+import HeroMedia from "@/components/HeroMedia";
 
 export const dynamic = "force-dynamic";
 import {
@@ -72,17 +73,7 @@ export default async function Home() {
 
           {/* Framed Media Block mimicking ccmfalla.com Paintings */}
           <div className="max-w-4xl w-full bg-white p-3.5 sm:p-5 rounded-lg border border-[#C5A059]/25 shadow-xl shadow-[#800020]/5 mb-6 hover:shadow-2xl transition duration-500">
-            <div className="relative aspect-video w-full rounded-md overflow-hidden bg-black/5 border border-stone-200">
-              <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="w-full h-full object-cover select-none"
-              >
-                <source src="/videos/hero.mp4" type="video/mp4" />
-              </video>
-            </div>
+            <HeroMedia />
             {/* Caption in the ccmfalla.com Painting Style */}
             <div className="mt-4 text-center space-y-1 select-none border-t border-[#C5A059]/10 pt-4">
               <p className="font-serif italic font-bold text-[#800020] text-sm sm:text-base">
