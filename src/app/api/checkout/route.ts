@@ -141,6 +141,11 @@ export async function POST(request: Request) {
             );
         }
 
+        // Resolve correct origin respecting reverse proxies (e.g. Dokploy/Docker)
+        const host = request.headers.get("x-forwarded-host") || request.headers.get("host") || "localhost:3000";
+        const proto = request.headers.get("x-forwarded-proto") || "http";
+        const origin = `${proto}://${host}`;
+
         // Check if Stripe key is configured. If not, simulate redirect url for testing.
         if (!stripe) {
             console.warn("STRIPE_SECRET_KEY not set. Operating in checkout simulation mode.");
@@ -152,12 +157,11 @@ export async function POST(request: Request) {
                 data: { stripeSessionId: mockSessionId },
             });
 
-            const successUrl = `${new URL(request.url).origin}/reserva/exito?session_id=${mockSessionId}&simulated=true&amount=${checkoutAmount}&reserva_id=${reserva.id}`;
+            const successUrl = `${origin}/reserva/exito?session_id=${mockSessionId}&simulated=true&amount=${checkoutAmount}&reserva_id=${reserva.id}`;
             return NextResponse.json({ url: successUrl });
         }
 
         // Create Stripe Checkout Session
-        const origin = new URL(request.url).origin;
         const description = `Pago parcial para Viaje Sevilla, Ciudad de la Música. Reserva ID: ${reserva.id}`;
 
         const session = await stripe.checkout.sessions.create({
