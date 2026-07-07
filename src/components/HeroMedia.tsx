@@ -71,7 +71,7 @@ export default function HeroMedia() {
                 loop
                 muted
                 playsInline
-                className="w-full h-full object-cover select-none"
+                className="absolute inset-0 w-full h-full object-cover select-none"
             >
                 <source src="/videos/hero.mp4" type="video/mp4" />
             </video>
