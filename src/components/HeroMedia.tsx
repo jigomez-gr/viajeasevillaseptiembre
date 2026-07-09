@@ -59,7 +59,7 @@ export default function HeroMedia() {
             {/* Background Audio Loop */}
             <audio
                 ref={audioRef}
-                src="/sonidos_mp3/Alonso Mudarra - Fantasia X.mp3"
+                src="/sonidos_mp3/Erik Satie - Gymnopédie No.1.mp3"
                 loop
                 preload="auto"
             />
