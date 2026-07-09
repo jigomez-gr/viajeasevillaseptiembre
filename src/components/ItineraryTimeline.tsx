@@ -23,26 +23,26 @@ const ITIN_DATA: TimelineDay[] = [
         id: 1,
         date: "31 Ago",
         dayName: "Lunes, 31 de agosto de 2026",
-        title: "Encuentro y Llegada a Sevilla",
-        desc: "Comienzo de nuestra travesía cultural desde Madrid hacia la capital hispalense, instalándonos en nuestro hotel 4*.",
+        title: "Encuentro y llegada a Sevilla",
+        desc: "Comienzo de nuestra travesía cultural desde Madrid hacia la capital hispalense",
         events: [
             {
                 time: "18:15 h",
                 title: "Punto de encuentro en Madrid",
-                description: "Estación Puerta de Atocha de Madrid, encuentro con el guía acompañante del Ciclo de conciertos.",
+                description: "Estación Puerta de Atocha en Madrid, encuentro con el guía acompañante",
                 type: "transport",
                 venue: "Estación de Puerta de Atocha, Madrid",
             },
             {
                 time: "19:05 h",
                 title: "Salida en tren IRYO (Clase Infinita)",
-                description: "Viaje de alta velocidad premium. Disfrute del confort de clase Infinita hasta el sur de España.",
+                description: "Viaje de alta velocidad. Disfrute del confort de clase Infinita hasta el sur de España.",
                 type: "transport",
             },
             {
                 time: "21:44 h",
                 title: "Llegada a Sevilla y traslado",
-                description: "Arribo a la Estación de Santa Justa. Traslado exclusivo en grupo al hotel Eurostars Guadalquivir.",
+                description: "Arribo a la Estación de Santa Justa. Traslado al hotel Eurostars Guadalquivir.",
                 type: "visit",
                 venue: "Sevilla (Estación Santa Justa / Hotel)",
             },
@@ -58,27 +58,27 @@ const ITIN_DATA: TimelineDay[] = [
         id: 2,
         date: "1 Sep",
         dayName: "Martes, 1 de septiembre de 2026",
-        title: "Alma Alfarera de Triana y Recital de Música Española",
-        desc: "Exploración exhaustiva del popular barrio de Triana, celebrando su cerámica, gastronomía y un concierto exclusivo de música antigua del s. XVI.",
+        title: "Paseo por Triana y recital semi-privado.",
+        desc: "Visita exhaustiva del popular barrio, célebre por el toreo, el flamenco y la cerámica (además de su río). Concierto exclusivo de música española del s. XVI",
         events: [
             {
                 time: "09:30 h",
                 title: "Descubrimiento de Triana y Parroquia de Santa Ana",
-                description: "Visita guiada a la Real Parroquia de Santa Ana (estilo gótico-mudéjar, mandada construir por Alfonso X el Sabio) y paseo de inmersión por sus callejones llenos de historia.",
+                description: "Visita guiada a la Real Parroquia de Santa Ana (estilo gótico-mudéjar, mandada construir por Alfonso X el Sabio) y paseo por sus callejas llenas de historia.",
                 type: "visit",
                 venue: "Real Parroquia de Santa Ana, Triana",
             },
             {
                 time: "11:30 h",
                 title: "Centro de Cerámica de Triana",
-                description: "Paseo museístico en la antigua fábrica de cerámica Santa Ana, testigo excepcional de la tradición alfarera del barrio.",
+                description: "Conoceremos el Centro de Cerámica de Triana, un bello museo convertido en el máximo representante de lo que fue la Triana alfarera de épocas pasadas.",
                 type: "visit",
                 venue: "Centro de Cerámica de Triana",
             },
             {
                 time: "13:30 h",
                 title: "Almuerzo en Restaurante Montalván",
-                description: "Menú gourmet en una singular casa-palacio que funcionaba como fábrica de cerámica tradicional sevillana.",
+                description: "Almuerzo en el Restaurante Montalván, una antigua fábrica de cerámica situado en pleno barrio.",
                 type: "meal",
                 venue: "Restaurante Montalván, Triana",
             },
@@ -286,7 +286,7 @@ interface ItineraryTimelineProps {
 const DAY_THUMBNAILS: { [key: number]: { src: string; caption: string } } = {
     1: {
         src: "https://images.unsplash.com/photo-1541417904950-b855846fe074?q=80&w=800&auto=format&fit=crop",
-        caption: "Estación de Atocha Madrid - Salida en Tren Premium IRYO"
+        caption: "Estación de Atocha Madrid - Salida en Tren IRYO"
     },
     2: {
         src: "https://images.unsplash.com/photo-1608408420657-374e6f823f61?q=80&w=800&auto=format&fit=crop",
@@ -314,7 +314,7 @@ const DAY_OVERLAY_DETAILS: { [key: number]: { title: string; category: string; d
     1: {
         title: "Origen y Salida desde Madrid",
         category: "TRAYECTO DE ALTA VELOCIDAD",
-        description: "Salida en Tren Premium IRYO con destino Sevilla",
+        description: "Salida en Tren IRYO con destino Sevilla",
         date: "31 Ago 2026"
     },
     2: {

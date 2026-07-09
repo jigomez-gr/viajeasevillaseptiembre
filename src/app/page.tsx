@@ -166,15 +166,15 @@ export default async function Home() {
           Sevilla, Ciudad de la Música
         </span>
         <h2 className="font-serif text-3xl sm:text-5xl font-bold text-[#800020] mb-8">
-          La Sinfonía Incalculable de una Ciudad Única
+          Sevilla, Ciudad de la Música
         </h2>
 
         <div className="space-y-6 text-base sm:text-lg text-[#1C1C1C]/80 leading-relaxed text-justify sm:text-center">
           <p>
-            Si hay una urbe cuya alma resuena ligada al arte sonoro, ésa es Sevilla. La imponente polifonía renacentista la erigió en el epicentro musical del siglo XVI. Sus callejas de Triana han amamantado el cante flamenco tradicional, y la Alameda de Hércules sirvió de cuna del arte jondo a principios del siglo XX.
+            Si hay una ciudad relacionada con la música, ésa es Sevilla: La polifonía renacentista convirtió a Sevilla en un importante centro musical del siglo XVI. Son decenas las óperas ambientadas en esta ciudad. Su barrio de Triana está considerado una de las cunas del flamenco, y la Alameda de Hércules el punto neurálgico de este arte en las primeras décadas del siglo XX.
           </p>
           <p>
-            Desde Cristóbal de Morales, Francisco Guerrero y Alonso Mudarra hasta Manuel de Falla —quien adoptó la ciudad y fundó aquí la emblemática Orquesta Bética de Cámara en 1923—, Sevilla ha aportado nombres de prestigio universal. Este idilio con la harmonía culminó en 2006, fecha en que la UNESCO la declaró formalmente la primera <strong>Ciudad de la Música</strong>.
+            Y fue aquí, en Sevilla, donde Manuel de Falla (hijo adoptivo de la ciudad) fundó la Orquesta Bética de Cámara en 1923, con la que estrenó, en versión de concierto, su magistral El Retablo de Maese Pedro en el ya desaparecido Teatro San Fernando. Todo esto y mucho más, hizo que Sevilla fuera nombrada Ciudad de la Música por la UNESCO (2006).
           </p>
         </div>
 
@@ -204,13 +204,13 @@ export default async function Home() {
               </h2>
               <div className="space-y-4 text-sm sm:text-base text-[#1C1C1C]/75 leading-relaxed">
                 <p>
-                  En marzo de 1526, Sevilla fue escenario de uno de los acontecimientos políticos y dinásticos más grandiosos de la Edad Moderna: la boda del Emperador Carlos V con su prima Isabel de Portugal.
+                  En marzo de 1526, Sevilla fue escenario de uno de los acontecimientos políticos y dinásticos más significativos de la Edad Moderna: la boda del Emperador Carlos V con su prima Isabel de Portugal.
                 </p>
                 <p>
-                  Celebrado en el suntuoso Salón de Embajadores de los Reales Alcázares de Sevilla, este regio enlace no solo estrechaba lazos de sangre con dispensa papal, sino que conllevaba enormes intereses económicos y geopolíticos para el floreciente Imperio Español.
+                  Celebrado en el Salón de Embajadores de los Reales Alcázares de Sevilla, este enlace no solo estrechaba lazos de sangre con dispensa papal, sino que conllevaba un importante trasfondo político y económico.
                 </p>
                 <p>
-                  Nuestro itinerario se sumerge en esa Sevilla dorada del siglo XVI, el gran puerto hacia el Nuevo Mundo, hilando la majestuosa arquitectura mudéjar con recitales íntimos que devuelven a la vida los cancioneros renacentistas.
+                  Nuestro itinerario recorre esa Sevilla del siglo XVI, hilando la arquitectura mudéjar con recitales que reviven los cancioneros renacentistas.
                 </p>
               </div>
             </div>
@@ -490,7 +490,7 @@ export default async function Home() {
               <ul className="space-y-4 text-xs sm:text-sm text-[#1C1C1C]/80">
                 <li className="flex items-start">
                   <CheckCircle2 className="w-5 h-5 text-[#2E5A44] shrink-0 mr-3 mt-0.5" />
-                  <span>Billete tren IRYO Madrid-Sevilla-Madrid en <strong>Clase Infinita</strong> (alta velocidad premium).</span>
+                  <span>Billete tren IRYO Madrid-Sevilla-Madrid en <strong>Clase Infinita</strong> (alta velocidad).</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle2 className="w-5 h-5 text-[#2E5A44] shrink-0 mr-3 mt-0.5" />
