@@ -67,8 +67,8 @@ export default async function Home() {
             SEVILLA, <span className="text-stone-800 block text-2xl sm:text-4xl md:text-5xl mt-1">Ciudad de la Música</span>
           </h1>
 
-          <p className="font-serif text-xs sm:text-base md:text-lg text-stone-500 max-w-2xl mb-4 sm:mb-5 italic tracking-wide leading-relaxed">
-            Viaje alrededor de la boda de Carlos V con Isabel de Portugal (31 de Agosto — 5 de Septiembre de 2026)
+          <p className="font-serif text-xs sm:text-base md:text-lg text-stone-500 max-w-4xl mb-4 sm:mb-5 italic tracking-wide leading-relaxed">
+            Viaje alrededor de la boda de Carlos V con Isabel de Portugal <span className="inline-block">(31 de Agosto — 5 de Septiembre de 2026)</span>
           </p>
 
           {/* Framed Media Block mimicking ccmfalla.com Paintings */}
