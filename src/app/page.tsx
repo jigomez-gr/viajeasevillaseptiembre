@@ -51,7 +51,7 @@ export default async function Home() {
       <Navbar />
 
       {/* 2. Hero Section Editorial con Vídeo de Fondo Enmarcado */}
-      <section className="relative bg-[#FAF9F6] pt-40 pb-20 border-b border-[#C5A059]/15 flex flex-col items-center justify-center overflow-hidden">
+      <section className="relative bg-[#FAF9F6] pt-28 sm:pt-32 pb-10 sm:pb-12 border-b border-[#C5A059]/15 flex flex-col items-center justify-center overflow-hidden">
         {/* Subtle decorative background elements */}
         <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(#800020_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
@@ -67,12 +67,12 @@ export default async function Home() {
             SEVILLA, <span className="text-stone-800 block text-3xl sm:text-5xl md:text-6xl mt-1">Ciudad de la Música</span>
           </h1>
 
-          <p className="font-serif text-base sm:text-[22px] text-stone-500 max-w-3xl mb-8 italic tracking-wide leading-relaxed">
+          <p className="font-serif text-base sm:text-[22px] text-stone-500 max-w-3xl mb-5 sm:mb-6 italic tracking-wide leading-relaxed">
             Viaje alrededor de la boda de Carlos V con Isabel de Portugal (31 de Agosto — 5 de Septiembre de 2026)
           </p>
 
           {/* Framed Media Block mimicking ccmfalla.com Paintings */}
-          <div className="max-w-4xl w-full bg-white p-3.5 sm:p-5 rounded-lg border border-[#C5A059]/25 shadow-xl shadow-[#800020]/5 mb-6 hover:shadow-2xl transition duration-500">
+          <div className="max-w-5xl w-full bg-white p-3.5 sm:p-5 rounded-lg border border-[#C5A059]/25 shadow-xl shadow-[#800020]/5 mb-6 hover:shadow-2xl transition duration-500">
             <HeroMedia />
             {/* Caption in the ccmfalla.com Painting Style */}
             <div className="mt-4 text-center space-y-1 select-none border-t border-[#C5A059]/10 pt-4">
