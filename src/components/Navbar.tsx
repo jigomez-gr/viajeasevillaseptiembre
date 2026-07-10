@@ -17,9 +17,9 @@ export default function Navbar() {
     return (
         <header className="fixed top-0 left-0 right-0 z-50 bg-white border-b border-[#C5A059]/15 shadow-sm font-sans">
             {/* Desktop Centered Header Layout */}
-            <div className="hidden md:flex flex-col items-center pt-5 pb-4 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="hidden md:flex flex-col items-center pt-3 pb-2.5 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Logo Block */}
-                <a href="#" className="flex items-center space-x-3 mb-4 group select-none">
+                <a href="#" className="flex items-center space-x-3 mb-2 group select-none">
                     {/* 3 vertical red bars */}
                     <div className="flex items-end space-x-1.5 h-10">
                         <div className="w-[4px] bg-[#800020] h-6 rounded-sm group-hover:scale-y-110 transition duration-300"></div>
@@ -63,7 +63,7 @@ export default function Navbar() {
             </div>
 
             {/* Mobile Header Layout */}
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between md:hidden relative">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-2 flex items-center justify-between md:hidden relative">
                 {/* Left side: Hamburger toggle button */}
                 <div className="w-10 flex justify-start">
                     <button
