@@ -56,23 +56,23 @@ export default async function Home() {
         <div className="absolute inset-0 opacity-[0.02] bg-[radial-gradient(#800020_1px,transparent_1px)] [background-size:16px_16px] pointer-events-none" />
 
         {/* Hero Content */}
-        <div className="relative max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center z-10 w-full">
-          <div className="inline-flex items-center space-x-1.5 text-[10px] tracking-widest text-[#C5A059] uppercase font-bold mb-4">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center flex flex-col items-center z-10 w-full">
+          <div className="inline-flex items-center space-x-1.5 text-[8px] sm:text-[9px] tracking-widest text-[#C5A059] uppercase font-bold mb-3">
             <span>Ciclo de conciertos Manuel de Falla</span>
             <span className="text-[#C5A059]/40">•</span>
             <span>Presentación Oficial</span>
           </div>
 
-          <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-[#800020] uppercase leading-[1.1] mb-4 select-none">
-            SEVILLA, <span className="text-stone-800 block text-3xl sm:text-5xl md:text-6xl mt-1">Ciudad de la Música</span>
+          <h1 className="font-serif text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#800020] uppercase leading-[1.1] mb-3 select-none">
+            SEVILLA, <span className="text-stone-800 block text-2xl sm:text-4xl md:text-5xl mt-1">Ciudad de la Música</span>
           </h1>
 
-          <p className="font-serif text-base sm:text-[22px] text-stone-500 max-w-3xl mb-5 sm:mb-6 italic tracking-wide leading-relaxed">
+          <p className="font-serif text-xs sm:text-base md:text-lg text-stone-500 max-w-2xl mb-4 sm:mb-5 italic tracking-wide leading-relaxed">
             Viaje alrededor de la boda de Carlos V con Isabel de Portugal (31 de Agosto — 5 de Septiembre de 2026)
           </p>
 
           {/* Framed Media Block mimicking ccmfalla.com Paintings */}
-          <div className="max-w-5xl w-full bg-white p-3.5 sm:p-5 rounded-lg border border-[#C5A059]/25 shadow-xl shadow-[#800020]/5 mb-6 hover:shadow-2xl transition duration-500">
+          <div className="max-w-6xl w-full bg-white p-3.5 sm:p-5 rounded-lg border border-[#C5A059]/25 shadow-xl shadow-[#800020]/5 mb-6 hover:shadow-2xl transition duration-500">
             <HeroMedia />
             {/* Caption in the ccmfalla.com Painting Style */}
             <div className="mt-4 text-center space-y-1 select-none border-t border-[#C5A059]/10 pt-4">

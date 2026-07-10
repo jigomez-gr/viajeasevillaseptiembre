@@ -55,7 +55,7 @@ export default function HeroMedia() {
     };
 
     return (
-        <div className="relative w-full rounded-md overflow-hidden bg-black/5 border border-stone-200 group">
+        <div className="relative w-full aspect-video rounded-md overflow-hidden bg-black/5 border border-stone-200 group">
             {/* Background Audio Loop */}
             <audio
                 ref={audioRef}
@@ -71,7 +71,7 @@ export default function HeroMedia() {
                 loop
                 muted
                 playsInline
-                className="w-full h-auto block select-none"
+                className="absolute inset-0 w-full h-full object-cover select-none"
             >
                 <source src="/videos/hero.mp4" type="video/mp4" />
             </video>
