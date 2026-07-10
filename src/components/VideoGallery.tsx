@@ -97,9 +97,9 @@ const DAYS_DATA: DayItem[] = [
                 filePath: "/videos_itinerario/dia2/real_alcazar.mp4"
             },
             {
-                title: "Pablo Heras-Casado & Freiburger Barockorchester",
-                description: "Dirección orquestal de la emblemática pieza de Felix Mendelssohn: A Midsummer Night's Dream.",
-                filePath: "/videos_itinerario/dia2/heras_casado_mendelssohn.mp4"
+                title: "The Bayreuther Festspielhaus: Orchester",
+                description: "Videoguide of the Richard Wagner Bayreuther Festspielhaus.",
+                filePath: "/videos_itinerario/dia2/hero_nuevo_final.mp4"
             }
         ]
     },
