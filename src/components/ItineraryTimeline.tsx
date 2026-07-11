@@ -361,7 +361,7 @@ const ITINERARY_VIDEOS: { [key: number]: { title: string; filePath: string }[] }
         { title: "Silva de Sirenas", filePath: "/videos_itinerario/dia1/silva_de_sirenas.mp4" }
     ],
     3: [
-        { title: "Heras-Casado Mendelssohn", filePath: "/videos_itinerario/dia2/heras_casado_mendelssohn.mp4" },
+        { title: "Bayreuth Orchester", filePath: "/videos_itinerario/dia2/hero_nuevo_final.mp4" },
         { title: "Real Alcázar", filePath: "/videos_itinerario/dia2/real_alcazar.mp4" }
     ],
     4: [
