@@ -92,7 +92,7 @@ const ITIN_DATA: TimelineDay[] = [
             {
                 time: "20:30 h",
                 title: "Recital: 'El Legado de Carlos V'",
-                description: "Gran concierto a cargo del dúo Silva de Sirenas (Cristina Bayón, soprano; Mª Luz Martínez Pérez, laúd renacentista). Un repertorio exquisito centrado en la música cortesana renacentista del siglo XVI.",
+                description: "Concierto a cargo del dúo Silva de Sirenas (Cristina Bayón, soprano; Mª Luz Martínez Pérez, laúd renacentista). Un repertorio centrado en la música española del siglo XVI.",
                 type: "concert",
                 venue: "CasaLa Teatro (Exclusivo para el grupo)",
             },

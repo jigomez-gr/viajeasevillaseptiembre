@@ -13,8 +13,7 @@ function ExitoContent() {
     const reservaId = searchParams.get("reserva_id");
 
     useEffect(() => {
-        const isStripeTestSession = sessionId?.startsWith("cs_test_") || false;
-        if ((isSimulated || isStripeTestSession) && reservaId) {
+        if (isSimulated && reservaId) {
             // Trigger the simulated webhook execution
             fetch("/api/stripe/webhook", {
                 method: "POST",
