@@ -196,7 +196,8 @@ const DAYS_DATA: DayItem[] = [
             {
                 title: "Réplica Monumental Nao Victoria",
                 description: "Espacio expositivo flotante dedicado a la mayor aventura marítima de la historia.",
-                filePath: "/videos_itinerario/dia5/nao_victoria.mp4"
+                filePath: "/videos_itinerario/dia5/nao_victoria.mp4",
+                youtubeUrl: "https://www.youtube.com/watch?v=NjH7yvdxi_Q"
             },
             {
                 title: "Cena de Clausura en Abades Triana",
