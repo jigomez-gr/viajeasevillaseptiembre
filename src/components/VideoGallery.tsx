@@ -20,6 +20,7 @@ interface VideoDetail {
     filePath: string;
     duration?: string;
     subtitle?: string;
+    youtubeUrl?: string;
 }
 
 interface DayItem {
@@ -44,7 +45,8 @@ const DAYS_DATA: DayItem[] = [
             {
                 title: "Estación de Sevilla Santa Justa",
                 description: "Llegada del tren de alta velocidad Iryo a la estación sevillana.",
-                filePath: "/videos_itinerario/dia0/estaciones_santa_justa.mp4"
+                filePath: "/videos_itinerario/dia0/estaciones_santa_justa.mp4",
+                youtubeUrl: "https://www.youtube.com/watch?v=32PUFpyOaQ4"
             }
         ]
     },
@@ -297,6 +299,72 @@ export default function VideoGallery({ videosExist }: VideoGalleryProps) {
                             const videoKey = `${activeDay.id}-${idx}`;
                             const mediaType = galleryMediaTypes[videoKey] || "completo";
                             const videoSrc = mediaType === "resumen" ? vid.filePath.replace(".mp4", "_resumen.mp4") : vid.filePath;
+
+                            if (vid.youtubeUrl) {
+                                return (
+                                    <div
+                                        key={idx}
+                                        className="flex flex-col bg-white rounded-xl border border-stone-200 overflow-hidden shadow-sm hover:shadow-md transition duration-300"
+                                    >
+                                        {/* Video Link Card Display */}
+                                        <a
+                                            href={vid.youtubeUrl}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="relative aspect-video bg-[#1C1C1C] flex items-center justify-center border-b border-stone-100 cursor-pointer group block"
+                                        >
+                                            {/* Mini Overlay Cover with Day Photo */}
+                                            <div className="absolute inset-0 bg-black/40 group-hover:bg-[#800020]/25 transition duration-300 z-10" />
+                                            <img
+                                                src={activeDay.image}
+                                                alt={vid.title}
+                                                className="w-full h-full object-cover filter brightness-[0.7] group-hover:brightness-[0.9] transition"
+                                            />
+
+                                            {/* Centered Play YouTube Button */}
+                                            <div
+                                                className="absolute inset-0 m-auto w-14 h-14 rounded-full bg-[#E62117] text-white flex items-center justify-center shadow-lg group-hover:scale-110 active:scale-95 transition-all border border-[#FAF9F6] z-20"
+                                                aria-label={`Ver ${vid.title} en YouTube`}
+                                            >
+                                                <Play className="w-6 h-6 fill-current translate-x-0.5" />
+                                            </div>
+
+                                            {/* YouTube Call to Action Label */}
+                                            <div className="absolute bottom-3 left-3 bg-stone-950/80 px-2 py-0.5 rounded text-[10px] text-white border border-white/10 uppercase tracking-widest font-bold z-20 flex items-center gap-1">
+                                                <span>Ver en YouTube</span>
+                                                <svg className="w-3.5 h-3.5 fill-current text-white" viewBox="0 0 24 24">
+                                                    <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-8z"/>
+                                                </svg>
+                                            </div>
+                                        </a>
+
+                                        {/* Video metadata */}
+                                        <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between">
+                                            <div>
+                                                <div className="flex items-center justify-between gap-2 mb-2">
+                                                    <h4 className="font-serif text-base sm:text-lg font-bold text-[#800020]">
+                                                        {vid.title}
+                                                    </h4>
+                                                    <span className="text-[10px] bg-red-100 text-[#E62117] border border-red-200 px-2 py-0.5 rounded font-bold uppercase tracking-wider font-sans">
+                                                        YouTube
+                                                    </span>
+                                                </div>
+                                                <p className="text-xs sm:text-sm text-[#1C1C1C]/75 leading-relaxed mb-4">
+                                                    {vid.description}
+                                                </p>
+                                                <a
+                                                    href={vid.youtubeUrl}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="inline-flex items-center text-xs font-bold text-[#E62117] hover:text-[#800020] uppercase tracking-wider transition gap-1.5 focus:outline-none"
+                                                >
+                                                    Enlace al vídeo en YouTube &rarr;
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                );
+                            }
 
                             return (
                                 <div

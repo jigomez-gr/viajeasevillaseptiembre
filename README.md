@@ -53,12 +53,13 @@ Todas las rutas de la aplicación están implementadas y operativas:
 
 ## ⚙️ Problemas Pendientes
 *   No restan bugs de visualización o funcionales conocidos. El portal está listo para lanzar a producción.
+*   **Migración de Vídeos a Enlaces Legales**: Iniciado. Se ha sustituido el primer vídeo del itinerario (Estación de Sevilla Santa Justa) por una tarjeta de enlace externo a YouTube (`https://www.youtube.com/watch?v=32PUFpyOaQ4`), removiendo su reproducción local por motivos de cumplimiento de derechos de distribución.
 
 ---
 
 ## ➡️ Próximos Pasos (Siguiente Sesión)
 Si deseas realizar más adecuaciones al sistema de reservas en el futuro:
-1.  **Edición de contenidos**: Realizar la actualización de textos o clips de vídeo en cuanto el usuario final los comunique.
+1.  **Edición de contenidos (Sustitución de Vídeos por Enlaces)**: Continuar reemplazando los siguientes vídeos del portfolio uno por uno, configurando la propiedad `youtubeUrl` en cada vídeo de `VideoGallery.tsx` según el usuario los vaya indicando.
 2.  **n8n Webhook Integration**: Configurar un webhook n8n para que escuche la tabla `ccmfalla.pagosusuarios` (por ejemplo filtrando `procesado = 'N'`), envíe un email formal de confirmación impreso en PDF y actualice la columna a `'S'` tras el aviso.
 3.  **Cambio a Producción Transaccional**: Reemplazar las claves `sk_test_`/`pk_test_` de Stripe en las variables de entorno de Dokploy por claves `sk_live_`/`pk_live_` reales para habilitar cobros verdaderos.
 
