@@ -53,7 +53,7 @@ Todas las rutas de la aplicación están implementadas y operativas:
 
 ## ⚙️ Problemas Pendientes
 *   No restan bugs de visualización o funcionales conocidos. El portal está listo para lanzar a producción.
-*   **Migración de Vídeos a Enlaces Legales**: Iniciado. Se han sustituido los ocho primeros vídeos de la galería por enlaces de YouTube externos:
+*   **Migración de Vídeos a Enlaces Legales**: Iniciado. Se han sustituido los once primeros vídeos de la galería por enlaces de YouTube externos:
     1. Estación de Sevilla Santa Justa (`https://www.youtube.com/watch?v=32PUFpyOaQ4`)
     2. Recital íntimo en CasaLa Teatro (`https://www.youtube.com/watch?v=uaoZt5B92i0`)
     3. Real Parroquia de Santa Ana (`https://www.youtube.com/watch?v=q4R2ryAEDfU`)
@@ -62,6 +62,9 @@ Todas las rutas de la aplicación están implementadas y operativas:
     6. Recital Lírico: Silva de Sirenas (`https://www.youtube.com/watch?v=j1NQi_b9lpI`)
     7. Bayreuth Orchester (`https://www.youtube.com/watch?v=nKKe4tm6Mz0`)
     8. Real Alcázar (`https://www.youtube.com/watch?v=GsKJ0hT90pU`)
+    9. Museo de Bellas Artes de Sevilla (`https://www.youtube.com/watch?v=5bt8PSnZgvc`)
+    10. Conmemoración del V Centenario (`https://www.youtube.com/watch?v=k1ddc09q2vY`)
+    11. Iglesia Colegial del Divino Salvador (`https://www.youtube.com/watch?v=0xTI83wm5zU`)
     Se removió la reproducción local de estos vídeos y se muestran como tarjetas que enlazan externamente tras el clic en el botón de reproducción por cuestiones de derechos de distribución.
 
 ---
