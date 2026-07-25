@@ -73,7 +73,8 @@ const DAYS_DATA: DayItem[] = [
             {
                 title: "Mercado de Triana",
                 description: "Recorrido sensorial por el histórico mercado erigido sobre las ruinas del Castillo de San Jorge.",
-                filePath: "/videos_itinerario/dia1/mercado_triana.mp4"
+                filePath: "/videos_itinerario/dia1/mercado_triana.mp4",
+                youtubeUrl: "https://www.youtube.com/watch?v=oiNAZyGiggs"
             },
             {
                 title: "Real Parroquia de Santa Ana",
@@ -84,7 +85,8 @@ const DAYS_DATA: DayItem[] = [
             {
                 title: "Recital Lírico: Silva de Sirenas",
                 description: "Dezid como puede ser - Pieza interpretada por Cristina Bayón y Mariluz Martínez.",
-                filePath: "/videos_itinerario/dia1/silva_de_sirenas.mp4"
+                filePath: "/videos_itinerario/dia1/silva_de_sirenas.mp4",
+                youtubeUrl: "https://www.youtube.com/watch?v=j1NQi_b9lpI"
             }
         ]
     },
