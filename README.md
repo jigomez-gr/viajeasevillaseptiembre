@@ -53,11 +53,13 @@ Todas las rutas de la aplicación están implementadas y operativas:
 
 ## ⚙️ Problemas Pendientes
 *   No restan bugs de visualización o funcionales conocidos. El portal está listo para lanzar a producción.
-*   **Migración de Vídeos a Enlaces Legales**: Iniciado. Se han sustituido los cuatro primeros vídeos de la galería por enlaces de YouTube externos:
+*   **Migración de Vídeos a Enlaces Legales**: Iniciado. Se han sustituido los seis primeros vídeos de la galería por enlaces de YouTube externos:
     1. Estación de Sevilla Santa Justa (`https://www.youtube.com/watch?v=32PUFpyOaQ4`)
     2. Recital íntimo en CasaLa Teatro (`https://www.youtube.com/watch?v=uaoZt5B92i0`)
     3. Real Parroquia de Santa Ana (`https://www.youtube.com/watch?v=q4R2ryAEDfU`)
     4. Centro de Cerámica de Triana (`https://www.youtube.com/watch?v=5cXfZ1Iuj30`)
+    5. Mercado de Triana (`https://www.youtube.com/watch?v=oiNAZyGiggs`)
+    6. Recital Lírico: Silva de Sirenas (`https://www.youtube.com/watch?v=j1NQi_b9lpI`)
     Se removió la reproducción local de estos vídeos y se muestran como tarjetas que enlazan externamente tras el clic en el botón de reproducción por cuestiones de derechos de distribución.
 
 ---
