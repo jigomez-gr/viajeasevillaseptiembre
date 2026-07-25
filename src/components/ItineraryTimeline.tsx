@@ -349,12 +349,12 @@ const DAY_OVERLAY_DETAILS: { [key: number]: { title: string; category: string; d
     }
 };
 
-const ITINERARY_VIDEOS: { [key: number]: { title: string; filePath: string }[] } = {
+const ITINERARY_VIDEOS: { [key: number]: { title: string; filePath: string; youtubeUrl?: string }[] } = {
     1: [
-        { title: "Estación Santa Justa", filePath: "/videos_itinerario/dia0/estaciones_santa_justa.mp4" }
+        { title: "Estación Santa Justa", filePath: "/videos_itinerario/dia0/estaciones_santa_justa.mp4", youtubeUrl: "https://www.youtube.com/watch?v=32PUFpyOaQ4" }
     ],
     2: [
-        { title: "CasaLa Teatro", filePath: "/videos_itinerario/dia1/casala_teatro.mp4" },
+        { title: "CasaLa Teatro", filePath: "/videos_itinerario/dia1/casala_teatro.mp4", youtubeUrl: "https://www.youtube.com/watch?v=uaoZt5B92i0" },
         { title: "Centro Cerámica", filePath: "/videos_itinerario/dia1/centro_ceramica_triana.mp4" },
         { title: "Mercado Triana", filePath: "/videos_itinerario/dia1/mercado_triana.mp4" },
         { title: "Parroquia Santa Ana", filePath: "/videos_itinerario/dia1/parroquia_santa_ana.mp4" },
@@ -667,6 +667,46 @@ export default function ItineraryTimeline({ videosExist }: ItineraryTimelineProp
                                             const videoSrc = mediaType === "resumen" && currentVideo ? currentVideo.filePath.replace(".mp4", "_resumen.mp4") : currentVideo?.filePath;
 
                                             if (currentVideo) {
+                                                if (currentVideo.youtubeUrl) {
+                                                    return (
+                                                        <div className="w-full h-full flex flex-col justify-between bg-[#1C1C1C] relative">
+                                                            {/* Cover Image and Clickable Link */}
+                                                            <a
+                                                                href={currentVideo.youtubeUrl}
+                                                                target="_blank"
+                                                                rel="noopener noreferrer"
+                                                                className="relative w-full h-full cursor-pointer group flex items-center justify-center aspect-video"
+                                                            >
+                                                                {/* Mini Overlay Cover with Day Photo */}
+                                                                <div className="absolute inset-0 bg-black/40 group-hover:bg-[#800020]/25 transition duration-300 z-10" />
+                                                                <img
+                                                                    src={thumb.src}
+                                                                    alt={currentVideo.title}
+                                                                    className="w-full h-full object-cover filter brightness-[0.7] group-hover:brightness-[0.9] transition"
+                                                                />
+
+                                                                {/* Centered YouTube Play Button */}
+                                                                <div
+                                                                    className="absolute inset-0 m-auto w-12 h-12 rounded-full bg-[#E62117] text-white flex items-center justify-center shadow-lg group-hover:scale-110 active:scale-95 transition-all border border-[#FAF9F6] z-20"
+                                                                    aria-label={`Ver ${currentVideo.title} en YouTube`}
+                                                                >
+                                                                    <svg className="w-5 h-5 fill-current translate-x-0.5" viewBox="0 0 24 24">
+                                                                        <path d="M8 5v14l11-7z" />
+                                                                    </svg>
+                                                                </div>
+
+                                                                {/* YouTube Label */}
+                                                                <div className="absolute bottom-3 left-3 bg-stone-950/80 px-2 py-0.5 rounded text-[10px] text-white border border-white/10 uppercase tracking-widest font-bold z-20 flex items-center gap-1">
+                                                                    <span>Ver en YouTube</span>
+                                                                    <svg className="w-3 h-3 fill-current text-white" viewBox="0 0 24 24">
+                                                                        <path d="M19 19H5V5h7V3H5c-1.11 0-2 .9-2 2v14c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2v-7h-2v7zM14 3v2h3.59l-9.83 9.83 1.41 1.41L19 6.41V10h2V3h-8z" />
+                                                                    </svg>
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                    );
+                                                }
+
                                                 return (
                                                     <div className="w-full h-full flex flex-col justify-between bg-[#1C1C1C]">
                                                         {/* Dual Player Toggle Switch (Timeline version) */}
