@@ -53,7 +53,7 @@ Todas las rutas de la aplicación están implementadas y operativas:
 
 ## ⚙️ Problemas Pendientes
 *   No restan bugs de visualización o funcionales conocidos. El portal está listo para lanzar a producción.
-*   **Migración de Vídeos a Enlaces Legales**: Iniciado. Se han sustituido los diecisiete primeros vídeos de la galería por enlaces de YouTube externos:
+*   **Migración de Vídeos a Enlaces Legales**: Completado. Se han sustituido los diecinueve vídeos de la galería por enlaces de YouTube externos:
     1. Estación de Sevilla Santa Justa (`https://www.youtube.com/watch?v=32PUFpyOaQ4`)
     2. Recital íntimo en CasaLa Teatro (`https://www.youtube.com/watch?v=uaoZt5B92i0`)
     3. Real Parroquia de Santa Ana (`https://www.youtube.com/watch?v=q4R2ryAEDfU`)
@@ -71,6 +71,8 @@ Todas las rutas de la aplicación están implementadas y operativas:
     15. Recital Lírico: Mariví Blasco & Javier Somoza (`https://www.youtube.com/watch?v=FGakXjrutpc`)
     16. Toccata Arpeggiata (`https://www.youtube.com/watch?v=7HEiGj_hYNU`)
     17. Réplica Monumental Nao Victoria (`https://www.youtube.com/watch?v=NjH7yvdxi_Q`)
+    18. Cena de Clausura en Abades Triana (`https://www.youtube.com/watch?v=Hwx75mVEfdE`)
+    19. Archivo General de Indias (`https://www.youtube.com/watch?v=8S0TnfD0bRI`)
     Se removió la reproducción local de estos vídeos y se muestran como tarjetas que enlazan externamente tras el clic en el botón de reproducción por cuestiones de derechos de distribución.
 
 ---
