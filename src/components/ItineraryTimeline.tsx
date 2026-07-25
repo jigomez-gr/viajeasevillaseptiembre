@@ -355,9 +355,9 @@ const ITINERARY_VIDEOS: { [key: number]: { title: string; filePath: string; yout
     ],
     2: [
         { title: "CasaLa Teatro", filePath: "/videos_itinerario/dia1/casala_teatro.mp4", youtubeUrl: "https://www.youtube.com/watch?v=uaoZt5B92i0" },
-        { title: "Centro Cerámica", filePath: "/videos_itinerario/dia1/centro_ceramica_triana.mp4" },
+        { title: "Centro Cerámica", filePath: "/videos_itinerario/dia1/centro_ceramica_triana.mp4", youtubeUrl: "https://www.youtube.com/watch?v=5cXfZ1Iuj30" },
         { title: "Mercado Triana", filePath: "/videos_itinerario/dia1/mercado_triana.mp4" },
-        { title: "Parroquia Santa Ana", filePath: "/videos_itinerario/dia1/parroquia_santa_ana.mp4" },
+        { title: "Parroquia Santa Ana", filePath: "/videos_itinerario/dia1/parroquia_santa_ana.mp4", youtubeUrl: "https://www.youtube.com/watch?v=q4R2ryAEDfU" },
         { title: "Silva de Sirenas", filePath: "/videos_itinerario/dia1/silva_de_sirenas.mp4" }
     ],
     3: [

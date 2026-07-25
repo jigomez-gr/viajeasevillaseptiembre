@@ -67,7 +67,8 @@ const DAYS_DATA: DayItem[] = [
             {
                 title: "Centro de Cerámica de Triana",
                 description: "Visita al museo dedicado a salvaguardar y divulgar el arte de la alfarería trianera.",
-                filePath: "/videos_itinerario/dia1/centro_ceramica_triana.mp4"
+                filePath: "/videos_itinerario/dia1/centro_ceramica_triana.mp4",
+                youtubeUrl: "https://www.youtube.com/watch?v=5cXfZ1Iuj30"
             },
             {
                 title: "Mercado de Triana",
@@ -77,7 +78,8 @@ const DAYS_DATA: DayItem[] = [
             {
                 title: "Real Parroquia de Santa Ana",
                 description: "Historia del templo mudéjar fundado por el rey Alfonso X en el siglo XIII.",
-                filePath: "/videos_itinerario/dia1/parroquia_santa_ana.mp4"
+                filePath: "/videos_itinerario/dia1/parroquia_santa_ana.mp4",
+                youtubeUrl: "https://www.youtube.com/watch?v=q4R2ryAEDfU"
             },
             {
                 title: "Recital Lírico: Silva de Sirenas",
