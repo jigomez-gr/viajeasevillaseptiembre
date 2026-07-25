@@ -191,7 +191,8 @@ const DAYS_DATA: DayItem[] = [
             {
                 title: "Archivo General de Indias",
                 description: "Exploración del emblemático edificio renacentista que atesora mapas y manuscritos históricos de América.",
-                filePath: "/videos_itinerario/dia5/archivo_indias.mp4"
+                filePath: "/videos_itinerario/dia5/archivo_indias.mp4",
+                youtubeUrl: "https://www.youtube.com/watch?v=8S0TnfD0bRI"
             },
             {
                 title: "Réplica Monumental Nao Victoria",
@@ -202,7 +203,8 @@ const DAYS_DATA: DayItem[] = [
             {
                 title: "Cena de Clausura en Abades Triana",
                 description: "Despedida gastronómica del grupo junto a las majestuosas vistas del río Guadalquivir iluminado.",
-                filePath: "/videos_itinerario/dia5/abades_triana.mp4"
+                filePath: "/videos_itinerario/dia5/abades_triana.mp4",
+                youtubeUrl: "https://www.youtube.com/watch?v=Hwx75mVEfdE"
             }
         ]
     }

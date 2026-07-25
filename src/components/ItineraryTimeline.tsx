@@ -377,8 +377,8 @@ const ITINERARY_VIDEOS: { [key: number]: { title: string; filePath: string; yout
         { title: "Toccata Arpeggiata", filePath: "/videos_itinerario/dia4/toccata_arpeggiata.mp4", youtubeUrl: "https://www.youtube.com/watch?v=7HEiGj_hYNU" }
     ],
     6: [
-        { title: "Abades Triana", filePath: "/videos_itinerario/dia5/abades_triana.mp4" },
-        { title: "Archivo de Indias", filePath: "/videos_itinerario/dia5/archivo_indias.mp4" },
+        { title: "Abades Triana", filePath: "/videos_itinerario/dia5/abades_triana.mp4", youtubeUrl: "https://www.youtube.com/watch?v=Hwx75mVEfdE" },
+        { title: "Archivo de Indias", filePath: "/videos_itinerario/dia5/archivo_indias.mp4", youtubeUrl: "https://www.youtube.com/watch?v=8S0TnfD0bRI" },
         { title: "Nao Victoria", filePath: "/videos_itinerario/dia5/nao_victoria.mp4", youtubeUrl: "https://www.youtube.com/watch?v=NjH7yvdxi_Q" }
     ]
 };
