@@ -101,12 +101,14 @@ const DAYS_DATA: DayItem[] = [
             {
                 title: "Visita Monumental al Real Alcázar",
                 description: "Vistas espectaculares y detalles ornamentales del conjunto mudéjar activo más antiguo.",
-                filePath: "/videos_itinerario/dia2/real_alcazar.mp4"
+                filePath: "/videos_itinerario/dia2/real_alcazar.mp4",
+                youtubeUrl: "https://www.youtube.com/watch?v=GsKJ0hT90pU"
             },
             {
                 title: "The Bayreuther Festspielhaus: Orchester",
                 description: "Videoguide of the Richard Wagner Bayreuther Festspielhaus.",
-                filePath: "/videos_itinerario/dia2/hero_nuevo_final.mp4"
+                filePath: "/videos_itinerario/dia2/hero_nuevo_final.mp4",
+                youtubeUrl: "https://www.youtube.com/watch?v=nKKe4tm6Mz0"
             }
         ]
     },

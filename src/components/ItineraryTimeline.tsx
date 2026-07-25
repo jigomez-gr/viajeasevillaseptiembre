@@ -361,8 +361,8 @@ const ITINERARY_VIDEOS: { [key: number]: { title: string; filePath: string; yout
         { title: "Silva de Sirenas", filePath: "/videos_itinerario/dia1/silva_de_sirenas.mp4", youtubeUrl: "https://www.youtube.com/watch?v=j1NQi_b9lpI" }
     ],
     3: [
-        { title: "Bayreuth Orchester", filePath: "/videos_itinerario/dia2/hero_nuevo_final.mp4" },
-        { title: "Real Alcázar", filePath: "/videos_itinerario/dia2/real_alcazar.mp4" }
+        { title: "Bayreuth Orchester", filePath: "/videos_itinerario/dia2/hero_nuevo_final.mp4", youtubeUrl: "https://www.youtube.com/watch?v=nKKe4tm6Mz0" },
+        { title: "Real Alcázar", filePath: "/videos_itinerario/dia2/real_alcazar.mp4", youtubeUrl: "https://www.youtube.com/watch?v=GsKJ0hT90pU" }
     ],
     4: [
         { title: "Bellas Artes", filePath: "/videos_itinerario/dia3/bellas_artes.mp4" },
