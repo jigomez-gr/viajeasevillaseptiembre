@@ -365,9 +365,9 @@ const ITINERARY_VIDEOS: { [key: number]: { title: string; filePath: string; yout
         { title: "Real Alcázar", filePath: "/videos_itinerario/dia2/real_alcazar.mp4", youtubeUrl: "https://www.youtube.com/watch?v=GsKJ0hT90pU" }
     ],
     4: [
-        { title: "Bellas Artes", filePath: "/videos_itinerario/dia3/bellas_artes.mp4" },
-        { title: "Boda Imperial", filePath: "/videos_itinerario/dia3/boda_imperial_500.mp4" },
-        { title: "Divino Salvador", filePath: "/videos_itinerario/dia3/divino_salvador.mp4" }
+        { title: "Bellas Artes", filePath: "/videos_itinerario/dia3/bellas_artes.mp4", youtubeUrl: "https://www.youtube.com/watch?v=5bt8PSnZgvc" },
+        { title: "Boda Imperial", filePath: "/videos_itinerario/dia3/boda_imperial_500.mp4", youtubeUrl: "https://www.youtube.com/watch?v=k1ddc09q2vY" },
+        { title: "Divino Salvador", filePath: "/videos_itinerario/dia3/divino_salvador.mp4", youtubeUrl: "https://www.youtube.com/watch?v=0xTI83wm5zU" }
     ],
     5: [
         { title: "Casa Salinas", filePath: "/videos_itinerario/dia4/casa_salinas.mp4" },

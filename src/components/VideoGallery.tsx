@@ -123,17 +123,20 @@ const DAYS_DATA: DayItem[] = [
             {
                 title: "Conmemoración del V Centenario",
                 description: "Charla e introducción histórica a la boda entre el Emperador Carlos V y la Emperatriz Isabel en 1526.",
-                filePath: "/videos_itinerario/dia3/boda_imperial_500.mp4"
+                filePath: "/videos_itinerario/dia3/boda_imperial_500.mp4",
+                youtubeUrl: "https://www.youtube.com/watch?v=k1ddc09q2vY"
             },
             {
                 title: "Museo de Bellas Artes de Sevilla",
                 description: "Recorrido por los claustros y las deslumbrantes visiones pictóricas barrocas de España.",
-                filePath: "/videos_itinerario/dia3/bellas_artes.mp4"
+                filePath: "/videos_itinerario/dia3/bellas_artes.mp4",
+                youtubeUrl: "https://www.youtube.com/watch?v=5bt8PSnZgvc"
             },
             {
                 title: "Iglesia Colegial del Divino Salvador",
                 description: "La segunda mayor basílica de la urbe hispalense, joya del arte manierista barroco.",
-                filePath: "/videos_itinerario/dia3/divino_salvador.mp4"
+                filePath: "/videos_itinerario/dia3/divino_salvador.mp4",
+                youtubeUrl: "https://www.youtube.com/watch?v=0xTI83wm5zU"
             }
         ]
     },
