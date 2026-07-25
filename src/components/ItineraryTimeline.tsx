@@ -373,8 +373,8 @@ const ITINERARY_VIDEOS: { [key: number]: { title: string; filePath: string; yout
         { title: "Casa Salinas", filePath: "/videos_itinerario/dia4/casa_salinas.mp4", youtubeUrl: "https://www.youtube.com/watch?v=pZQoDi-cMaU" },
         { title: "Catedral y Giralda", filePath: "/videos_itinerario/dia4/catedral_giralda.mp4", youtubeUrl: "https://www.youtube.com/watch?v=A9UfLj0LVgk" },
         { title: "Jardines Alcázar", filePath: "/videos_itinerario/dia4/jardines_alcazar.mp4", youtubeUrl: "https://www.youtube.com/watch?v=5InDLQ1gFVw" },
-        { title: "Mariví Blasco & Somoza", filePath: "/videos_itinerario/dia4/marivi_blasco_javier_somoza.mp4" },
-        { title: "Toccata Arpeggiata", filePath: "/videos_itinerario/dia4/toccata_arpeggiata.mp4" }
+        { title: "Mariví Blasco & Somoza", filePath: "/videos_itinerario/dia4/marivi_blasco_javier_somoza.mp4", youtubeUrl: "https://www.youtube.com/watch?v=FGakXjrutpc" },
+        { title: "Toccata Arpeggiata", filePath: "/videos_itinerario/dia4/toccata_arpeggiata.mp4", youtubeUrl: "https://www.youtube.com/watch?v=7HEiGj_hYNU" }
     ],
     6: [
         { title: "Abades Triana", filePath: "/videos_itinerario/dia5/abades_triana.mp4" },

@@ -169,12 +169,14 @@ const DAYS_DATA: DayItem[] = [
             {
                 title: "Toccata Arpeggiata - Álex Pernas",
                 description: "Interpretación acústica con guitarra barroca de la célebre pieza de Giovanni Girolamo Kapsberger.",
-                filePath: "/videos_itinerario/dia4/toccata_arpeggiata.mp4"
+                filePath: "/videos_itinerario/dia4/toccata_arpeggiata.mp4",
+                youtubeUrl: "https://www.youtube.com/watch?v=7HEiGj_hYNU"
             },
             {
                 title: "Recital Lírico: Mariví Blasco & Javier Somoza",
                 description: "Parlami pur sincero de Francesco Carulli, interpretado con guitarra y soprano en directo.",
-                filePath: "/videos_itinerario/dia4/marivi_blasco_javier_somoza.mp4"
+                filePath: "/videos_itinerario/dia4/marivi_blasco_javier_somoza.mp4",
+                youtubeUrl: "https://www.youtube.com/watch?v=FGakXjrutpc"
             }
         ]
     },
