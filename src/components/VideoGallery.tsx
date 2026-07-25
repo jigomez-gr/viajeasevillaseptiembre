@@ -151,17 +151,20 @@ const DAYS_DATA: DayItem[] = [
             {
                 title: "Palacio Casa de Salinas",
                 description: "Recorrido por el patio principal de columnas de mármol y mosaicos romanos del palacio privado.",
-                filePath: "/videos_itinerario/dia4/casa_salinas.mp4"
+                filePath: "/videos_itinerario/dia4/casa_salinas.mp4",
+                youtubeUrl: "https://www.youtube.com/watch?v=pZQoDi-cMaU"
             },
             {
                 title: "Catedral de Sevilla y Ascenso a la Giralda",
                 description: "Vistas aéreas espectaculares de Sevilla tras ascender las rampas de la célebre torre campanario.",
-                filePath: "/videos_itinerario/dia4/catedral_giralda.mp4"
+                filePath: "/videos_itinerario/dia4/catedral_giralda.mp4",
+                youtubeUrl: "https://www.youtube.com/watch?v=A9UfLj0LVgk"
             },
             {
                 title: "Jardines y Laberintos del Real Alcázar",
                 description: "Los famosos setos de arrayanes, fuentes y pabellón imperial de los jardines reales.",
-                filePath: "/videos_itinerario/dia4/jardines_alcazar.mp4"
+                filePath: "/videos_itinerario/dia4/jardines_alcazar.mp4",
+                youtubeUrl: "https://www.youtube.com/watch?v=5InDLQ1gFVw"
             },
             {
                 title: "Toccata Arpeggiata - Álex Pernas",
